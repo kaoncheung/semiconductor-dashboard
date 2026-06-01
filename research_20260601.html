@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-TW" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日研究報告 2026.06.01 | Ann's Research Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f4fa;--white:#fff;--hbg:#1a2744;--hnav:#243059;
+  --border:#e2e8f0;--border2:#cbd5e1;
+  --accent:#5b8df5;--accent2:#38bdf8;--accent3:#34d399;
+  --text:#1e293b;--text2:#64748b;--text3:#94a3b8;
+  --font:'Inter','Noto Sans TC',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh}
+.back-bar{background:var(--hbg);padding:.6rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
+.back-link{font-size:12px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s}
+.back-link:hover{color:#fff}
+.lang-btn{font-size:11px;padding:4px 10px;border-radius:5px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);background:transparent;cursor:pointer;transition:all .18s}
+.lang-btn:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.page-header{background:var(--hbg);padding:1.75rem 2.5rem 0;color:#fff}
+.heyebrow{font-size:11px;font-weight:500;color:rgba(255,255,255,.45);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem}
+.htitle{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;margin-bottom:.4rem}
+.hmeta{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:1.2rem}
+.hmeta strong{color:rgba(255,255,255,.75);font-weight:500}
+.snav{background:var(--hnav);border-top:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:100}
+.snav-inner{display:flex;overflow-x:auto;padding:0 2.5rem;scrollbar-width:none}
+.snav-inner::-webkit-scrollbar{display:none}
+.slink{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:rgba(255,255,255,.5);padding:10px 14px;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .18s}
+.slink:hover{color:#fff;background:rgba(255,255,255,.05)}
+.slink.active{color:#fff;border-bottom-color:var(--accent2)}
+.content{max-width:980px;margin:0 auto;padding:2.5rem 2rem 5rem}
+.sec-block{margin-bottom:3.5rem}
+.sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--border)}
+.sec-badge{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:5px;flex-shrink:0}
+.sec-title{font-size:1.2rem;font-weight:700}
+.rlabel{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 12px;border-radius:6px;margin-bottom:.9rem}
+.rl-tw{background:#fef9c3;color:#854d0e;border:1px solid #fde68a}
+.rl-int{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.rl-jp{background:#fdf2f8;color:#9d174d;border:1px solid #fbcfe8}
+.rl-us{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+.rl-kr{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.nitem{background:var(--white);border:1px solid var(--border);border-left:4px solid transparent;border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:10px;transition:all .18s}
+.nitem:hover{border-color:var(--border2);box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.ntitle{font-size:15px;font-weight:600;color:var(--text);margin-bottom:.45rem;line-height:1.5}
+.nsum{font-size:13px;color:var(--text2);line-height:1.82;margin-bottom:.65rem}
+.nmeta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--text3)}
+.nsource a{color:var(--accent);text-decoration:none;font-weight:500}
+.nsource a:hover{text-decoration:underline}
+.ndate-badge{background:#f1f5f9;color:var(--text3);padding:2px 8px;border-radius:4px;font-size:11px;font-family:monospace}
+/* Section colours */
+.s-semi .sec-badge{background:#ede9fe;color:#5b21b6}
+.s-semi .sec-hdr{border-color:#ddd6fe}
+.s-semi .nitem{border-left-color:#7c3aed}
+.s-water .sec-badge{background:#e0f2fe;color:#0369a1}
+.s-water .sec-hdr{border-color:#bae6fd}
+.s-water .nitem{border-left-color:#0ea5e9}
+.s-power .sec-badge{background:#fef9c3;color:#854d0e}
+.s-power .sec-hdr{border-color:#fde68a}
+.s-power .nitem{border-left-color:#eab308}
+.s-energy .sec-badge{background:#dcfce7;color:#166534}
+.s-energy .sec-hdr{border-color:#bbf7d0}
+.s-energy .nitem{border-left-color:#22c55e}
+.s-cable .sec-badge{background:#cffafe;color:#0e7490}
+.s-cable .sec-hdr{border-color:#a5f3fc}
+.s-cable .nitem{border-left-color:#06b6d4}
+.s-land .sec-badge{background:#fef3c7;color:#92400e}
+.s-land .sec-hdr{border-color:#fde68a}
+.s-land .nitem{border-left-color:#f59e0b}
+.s-infra .sec-badge{background:#f3e8ff;color:#6b21a8}
+.s-infra .sec-hdr{border-color:#e9d5ff}
+.s-infra .nitem{border-left-color:#a855f7}
+.s-social .sec-badge{background:#fee2e2;color:#991b1b}
+.s-social .sec-hdr{border-color:#fecaca}
+.s-social .nitem{border-left-color:#ef4444}
+.s-lit .sec-badge{background:#f0fdf4;color:#14532d}
+.s-lit .sec-hdr{border-color:#bbf7d0}
+.lit-table{width:100%;border-collapse:collapse;font-size:13px}
+.lit-table th{background:#f8faff;font-size:11px;font-weight:600;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border-bottom:2px solid var(--border);text-align:left}
+.lit-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55}
+.lit-table tr:last-child td{border-bottom:none}
+.lit-table tr:hover td{background:#f8faff}
+.lbadge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:3px;display:inline-block;white-space:nowrap}
+.lb-thesis{background:#fef9c3;color:#854d0e}
+.lb-journal{background:#dcfce7;color:#166534}
+.lb-intl{background:#eff6ff;color:#1e40af}
+.lb-report{background:#ede9fe;color:#5b21b6}
+.lb-news{background:#fee2e2;color:#991b1b}
+.lit-link{color:var(--accent);text-decoration:none;font-weight:500}
+.lit-link:hover{text-decoration:underline}
+.lit-abstract{font-size:12px;color:var(--text3);margin-top:4px;line-height:1.6}
+.db-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:.75rem}
+.db-card{background:var(--white);border:1px solid var(--border);border-radius:7px;padding:.9rem 1.1rem;text-decoration:none;color:inherit;display:flex;align-items:center;justify-content:space-between;transition:all .18s}
+.db-card:hover{border-color:#93c5fd;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.db-name{font-size:13px;font-weight:500}
+.db-sub{font-size:11px;color:var(--text3);margin-top:1px}
+footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;font-size:12px;color:var(--text3);background:var(--white)}
+.en{display:none}
+html[lang=en] .zh{display:none}
+html[lang=en] .en{display:inline}
+.en-b{display:none}
+html[lang=en] .zh-b{display:none}
+html[lang=en] .en-b{display:block}
+</style>
+</head>
+<body>
+<div class="back-bar">
+  <a href="index.html" class="back-link">← <span class="zh">返回 Research Hub</span><span class="en">Back to Research Hub</span></a>
+  <button class="lang-btn" onclick="toggleLang()">EN / 中</button>
+</div>
+<div class="page-header">
+  <div class="heyebrow"><span class="zh">每日研究報告</span><span class="en">Daily Research Briefing</span> · DAILY RESEARCH BRIEFING</div>
+  <div class="htitle"><span class="zh">竹科水資源與半導體政策動態報告</span><span class="en">HSP Water Resource & Semiconductor Policy Daily Report</span></div>
+  <div class="hmeta">2026 年 6 月 1 日（星期一）&nbsp;|&nbsp;<strong><span class="zh">資料來源：過去 24–48 小時最新新聞｜涵蓋：國內＋國際，每主題 5–10 則</span><span class="en">Sources: Latest 24–48hr news · Domestic + International · 5–10 items per topic</span></strong></div>
+  <nav class="snav">
+    <div class="snav-inner">
+      <a href="#semi"   class="slink">💠 <span class="zh">半導體</span><span class="en">Semi</span></a>
+      <a href="#water"  class="slink">💧 <span class="zh">水資源</span><span class="en">Water</span></a>
+      <a href="#power"  class="slink">⚡ <span class="zh">電力</span><span class="en">Power</span></a>
+      <a href="#energy" class="slink">🌿 <span class="zh">能源政策</span><span class="en">Energy</span></a>
+      <a href="#cable"  class="slink">🌐 <span class="zh">海底電纜</span><span class="en">Cable</span></a>
+      <a href="#land"   class="slink">🏗️ <span class="zh">土地資源</span><span class="en">Land</span></a>
+      <a href="#infra"  class="slink">🛣️ <span class="zh">公共建設</span><span class="en">Infra</span></a>
+      <a href="#social" class="slink">👥 <span class="zh">社會影響</span><span class="en">Social</span></a>
+      <a href="#lit"    class="slink">📚 <span class="zh">文獻資料庫</span><span class="en">Literature</span></a>
+    </div>
+  </nav>
+</div>
+
+<div class="content">
+
+<!-- ① 半導體 -->
+<div class="sec-block s-semi" id="semi">
+  <div class="sec-hdr">
+    <span class="sec-badge">SEMICONDUCTORS</span>
+    <h2 class="sec-title">💠 <span class="zh">半導體</span><span class="en">Semiconductors</span></h2>
+  </div>
+  <div class="rlabel rl-tw">🇹🇼 <span class="zh">台灣 / 國內</span><span class="en">Taiwan / Domestic</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">龍科三期復活，傳台積電埃米級製程進駐，投資上看6000億元</span><span class="en">Longtan Phase 3 Revived: TSMC Angstrom-Era Fab Rumored, Investment Up to NT$600B</span></div>
+    <div class="nsum"><span class="zh">竹科管理局長胡世民證實已完成龍科三期公聽會，擴建面積擴大至104公頃，業界傳台積電將投資埃米世代製程廠，投資額上看5,000–6,000億元。台積電回應「不排除任何可能性」。龍科三期因需二階環評，預計2029年才能取得用地。</span><span class="en">HSP Bureau Director confirms the Longtan Phase 3 public hearing is complete, with the expansion area enlarged to 104 hectares. Industry sources suggest TSMC may invest in an Angstrom-era fab worth NT$500–600B. TSMC says it "won't rule out any possibility." Due to a second-stage EIA, land acquisition is expected no earlier than 2029.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.05</span><span class="nsource"><span class="zh">來源：</span><a href="https://tw.news.yahoo.com/%E9%BE%8D%E7%A7%913%E6%9C%9F%E6%93%B4%E5%BB%BA%E5%BE%A9%E6%B4%BB-%E5%82%B3%E5%8F%B0%E7%A9%8D%E9%9B%BB%E5%9F%83%E7%B1%B3%E7%B4%9A%E8%A3%BD%E7%A8%8B%E9%80%B2%E9%A7%90-223437234.html" target="_blank">Yahoo 新聞／經濟日報</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">台積電龍潭傾向先進封裝廠（FOPLP），非埃米晶圓廠</span><span class="en">TSMC Longtan Said to Favor Advanced Packaging (FOPLP), Not Angstrom Wafer Fab</span></div>
+    <div class="nsum"><span class="zh">供應鏈消息指，台積電在龍科三期傾向投資面板級先進封裝廠（FOPLP），而非埃米級晶圓廠，原因是龍潭產業聚落與用電條件更適合封裝製程。漢唐、帆宣等建廠夥伴迎逾千億元訂單商機。</span><span class="en">Supply chain sources suggest TSMC favors a Fan-Out Panel-Level Packaging (FOPLP) facility at Longtan Phase 3 rather than an Angstrom wafer fab, citing Longtan's industrial cluster and power conditions as better suited for packaging. Fab-construction partners Hantec and Farsoon stand to gain NT$100B+ in orders.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.05</span><span class="nsource"><span class="zh">來源：</span><a href="https://ec.ltn.com.tw/article/breakingnews/5424420" target="_blank">自由財經</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">台積電Q1 2026財報：合併營收1.134兆元，淨利5,724億元，年增35%</span><span class="en">TSMC Q1 2026 Earnings: Revenue NT$1.134T, Net Income NT$572.4B, +35% YoY</span></div>
+    <div class="nsum"><span class="zh">台積電2026年第一季合併營收新台幣1.1341兆元，淨利5,724.8億元，年增35.1%，毛利率66.2%。AI晶片需求帶動3nm、5nm產能持續緊繃，2026–2028年資本支出預估超過1,500億美元。</span><span class="en">TSMC's Q1 2026 consolidated revenue reached NT$1.1341T, net income NT$572.48B, +35.1% YoY, with gross margin at 66.2%. AI chip demand keeps 3nm and 5nm capacity fully loaded; capex for 2026–2028 is estimated to exceed US$150B.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.04.16</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.sec.gov/Archives/edgar/data/1046179/000104617926000199/a1q26e_withguidancexfinal.htm" target="_blank">美國SEC Form 6-K</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">台積電2nm產能至2028年每年成長70%，亞利桑那一廠產出年增80%</span><span class="en">TSMC 2nm Capacity to Grow 70% Annually Through 2028; Arizona Fab 1 Output +80% YoY</span></div>
+    <div class="nsum"><span class="zh">台積電2奈米2025年Q4量產，首年產出較3奈米首年高45%；亞利桑那一廠2026年產出年增80%，熊本一廠年增130%。Sony與台積電簽MOU，將在熊本Koshi市新廠合資開發次世代影像感測器。</span><span class="en">TSMC's 2nm launched production in Q4 2025, with first-year output 45% higher than 3nm. Arizona Fab 1 output +80% YoY in 2026, Kumamoto Fab 1 +130%. Sony and TSMC signed an MOU for a joint venture in Kumamoto's Koshi City for next-gen image sensors.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.04.28</span><span class="nsource"><span class="zh">來源：</span><a href="https://focustaiwan.tw/sci-tech/202604280010" target="_blank">Focus Taiwan</a></span></div>
+  </div>
+  <br>
+  <div class="rlabel rl-int">🌐 <span class="zh">國際</span><span class="en">International</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">全球半導體Q1 2026銷售額季增25%，年化逼近1兆美元</span><span class="en">Global Semiconductor Q1 2026 Sales Up 25% QoQ, Annualized Near US$1T</span></div>
+    <div class="nsum"><span class="zh">SIA公布2026年第一季全球晶片銷售額2,985億美元，較2025 Q4成長25%。若現有成長動能維持，2026年全年有望突破1兆美元大關，創產業史上新高。AI訓練與推論需求被視為最主要驅動力。</span><span class="en">SIA reports global Q1 2026 chip sales of US$298.5B, up 25% from Q4 2025. Sustained momentum could push full-year 2026 past the US$1T milestone for the first time. AI training and inference demand is cited as the primary driver.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.06.01</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.semiconductors.org" target="_blank">Semiconductor Industry Association</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle">Applied Materials CEO：「半導體業正處史上最強時代」</div>
+    <div class="nsum"><span class="zh">Applied Materials執行長Gary Dickerson於5月28日表示，AI帶動的算力需求讓半導體設備產業「前所未見」，強調公司對2027–2028年的訂單能見度極高，駁斥市場對景氣循環過熱的疑慮。Heterogeneous integration（異質整合）成為延續AI成長的關鍵技術路徑。</span><span class="en">Applied Materials CEO Gary Dickerson stated on May 28 that AI-driven compute demand is creating "unprecedented" conditions for semiconductor equipment, with strong order visibility into 2027–2028. Heterogeneous integration is cited as the key technological path to sustain AI growth.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.05.28</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.cnbc.com" target="_blank">CNBC</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">三星、SK海力士HBM4量產競速，韓國龍仁半導體集群2027年投產</span><span class="en">Samsung & SK Hynix Race to Mass-Produce HBM4; Korea's Yongin Cluster On Track for 2027</span></div>
+    <div class="nsum"><span class="zh">三星於平澤、SK海力士於利川M16啟動HBM4量產；SK海力士龍仁半導體集群首座廠2025年2月動工，預計2027年5月投產。三星2nm代工訂單量目標增約130%，與台積電展開正面競爭。</span><span class="en">Samsung (Pyeongtaek) and SK Hynix (Icheon M16) have initiated HBM4 mass production. SK Hynix's Yongin semiconductor cluster broke ground in February 2025, targeting May 2027 production. Samsung's 2nm foundry order target is up ~130%, directly competing with TSMC.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.02</span><span class="nsource"><span class="zh">來源：IT之家、韓媒綜合報導</span><span class="en">Source: IT之家, Korean Media</span></span></div>
+  </div>
+</div>
+
+<!-- ② 水資源 -->
+<div class="sec-block s-water" id="water">
+  <div class="sec-hdr">
+    <span class="sec-badge">WATER RESOURCES</span>
+    <h2 class="sec-title">💧 <span class="zh">水資源</span><span class="en">Water Resources</span></h2>
+  </div>
+  <div class="rlabel rl-tw">🇹🇼 <span class="zh">台灣 / 國內</span><span class="en">Taiwan / Domestic</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">寶山二期4座2nm廠每日用水9.8萬噸，佔新竹地區總用水16–18%</span><span class="en">HSP Baoshan Phase 2 Four 2nm Fabs to Use 98,000 Tons/Day — 16–18% of Hsinchu's Total</span></div>
+    <div class="nsum"><span class="zh">環境權保障基金會指出，寶山二期4座2奈米廠環評估計每日用水量高達9.8萬噸，「單一廠區便占新竹地區總用水量的16%至18%」。台積電「2030全面用再生水」承諾已於2025年10月跳票，高峰需水量從7.3萬噸飆升至8.7萬噸，供水餘裕率最劣情境僅2.5%。</span><span class="en">ERF states that HSP Baoshan Phase 2's four 2nm fabs are estimated to consume 98,000 tons/day—"16 to 18% of Hsinchu's total water use for a single fab cluster." TSMC's commitment to "100% reclaimed water by 2030" was broken in October 2025. Peak demand rose from 73,000 to 87,000 tons/day, with minimum supply margin at 2.5%.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.01.16</span><span class="nsource"><span class="zh">來源：</span><a href="https://erf.org.tw/tsmc2nm260116/" target="_blank">環境權保障基金會報告</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">3年一旱，《再生水資源發展條例》子法2026年2月上路，用水大戶須用50%再生水</span><span class="en">Reclaimed Water Act Regulations Take Effect February 2026; Large Users Must Use 50% Reclaimed Water</span></div>
+    <div class="nsum"><span class="zh">《再生水資源發展條例》子法2026年2月正式上路，每日用水逾2萬公噸的用水大戶擴建新廠須使用50%再生水。台積電全台科學園區每日消耗總水量逾20.8萬公噸（竹科5.6萬、中科5.3萬、南科9.9萬）。</span><span class="en">Reclaimed Water Act sub-regulations took effect in February 2026, requiring large users (consuming over 20,000 tons/day) to use 50% reclaimed water when expanding. TSMC's total daily water consumption across science parks exceeds 208,000 tons (HSP 56K, CIP 53K, STSP 99K).</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.02</span><span class="nsource"><span class="zh">來源：</span><a href="https://tw.news.yahoo.com/3%E5%B9%B4-%E6%97%B1-040501891.html" target="_blank">商業周刊／Yahoo</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">台積電南科再生水廠：全球首創工業廢水回流先進製程，熊本廠涵養地下水達用量三倍</span><span class="en">TSMC Tainan Reclaimed Water Plant: World's First Industrial Wastewater to Advanced Process; Kumamoto Replenishes 3x Its Usage</span></div>
+    <div class="nsum"><span class="zh">台積電南科再生水廠為全球半導體業首座將工業廢水煉成製程用水的基地。台積電企業永續副總何麗梅指出，亞利桑那承諾90%水回收率、熊本廠涵養地下水已超過廠區用量三倍，成為「Water Positive」國際示範案例。</span><span class="en">TSMC's Tainan reclaimed water plant is the world's first in the semiconductor industry to convert industrial wastewater into process water. TSMC's VP of sustainability notes Arizona has committed to 90% water recovery, while the Kumamoto fab replenishes groundwater at 3x its consumption rate—an international "Water Positive" benchmark.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.03.21–22</span><span class="nsource"><span class="zh">來源：</span><a href="https://technews.tw/2026/03/21/tsmc-water-advanced-process/" target="_blank">科技新報</a> | <a href="https://www.ctee.com.tw/news/20260322700016-430501" target="_blank">工商時報</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">新竹水情2026年3月亮黃燈，石門水庫每日支援17.5萬噸，竹科自主節水7%</span><span class="en">Hsinchu Water Alert Goes Yellow in March 2026; Shihmen Reservoir Supplies 175,000 Tons/Day; HSP Self-Saves 7%</span></div>
+    <div class="nsum"><span class="zh">自3月12日起新竹地區實施減壓供水黃燈，自來水減壓時段調整為晚間10時至翌日清晨5時。石門水庫每日支援17.5萬噸以上，竹科各廠自主節水7%。4月梅雨後蓄水率已回升，但5月石門水庫日支援新竹仍維持高位。</span><span class="en">Since March 12, Hsinchu entered yellow water alert with pressure-reduced supply from 10PM to 5AM daily. Shihmen Reservoir supports over 175,000 tons/day; HSP fabs self-save 7%. After April rains, reservoir levels recovered, but Shihmen's daily support to Hsinchu remains elevated in May.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.03.12–04</span><span class="nsource"><span class="zh">來源：</span><a href="https://news.pchome.com.tw/finance/cna/20260316/index-17736541665111118003.html" target="_blank">中央社</a> | <a href="https://www.water.gov.tw" target="_blank">台灣自來水公司</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">新竹2036年每日需水量將達87.94萬噸，海淡廠、天花湖水庫方案爭議不斷</span><span class="en">Hsinchu's Daily Water Demand to Reach 879,400 Tons by 2036; Desalination and Reservoir Plans Remain Controversial</span></div>
+    <div class="nsum"><span class="zh">依新竹縣2020年國土計畫，2036年每日自來水需水量將達87.94萬噸。補足缺口的開源方案包含南寮10萬噸海淡廠及苗栗天花湖水庫，後者因爭議過大已被水利署從前瞻計畫刪除。</span><span class="en">Per Hsinchu County's 2020 National Land Use Plan, daily water demand will reach 879,400 tons by 2036. Gap-filling options include the 100,000-ton Nanliao desalination plant and the controversial Tianhua Lake Reservoir in Miaoli, the latter already removed from the Forward-Looking Infrastructure Plan by WRA.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2025.05.28</span><span class="nsource"><span class="zh">來源：</span><a href="https://ourisland.pts.org.tw/content/7429" target="_blank">公視「我們的島」</a></span></div>
+  </div>
+  <br>
+  <div class="rlabel rl-int">🌐 <span class="zh">國際</span><span class="en">International</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">Robeco：全球40%半導體廠位於高缺水壓力地區，美國亞利桑那47%建廠案水權未確認</span><span class="en">Robeco: 40% of Global Fabs in High Water-Stress Zones; 47% of Arizona Fab Cases Lack Water Rights</span></div>
+    <div class="nsum"><span class="zh">Robeco 2026年3月報告指出，40%現有晶圓廠及40%新宣布廠房位於2030年將面臨高度缺水壓力的地區。美國TSMC亞利桑那廠47%建廠案水權仍未確認，工程延誤超過14個月。</span><span class="en">Robeco's March 2026 report finds 40% of existing and announced fabs will face high water stress by 2030. In Arizona, 47% of TSMC fab cases still lack confirmed water rights, with construction delays exceeding 14 months.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.03</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.robeco.com/en-int/insights/2026/03/why-the-future-of-chips-depends-on-water" target="_blank">Robeco</a></span></div>
+  </div>
+</div>
+
+<!-- ③ 電力 -->
+<div class="sec-block s-power" id="power">
+  <div class="sec-hdr">
+    <span class="sec-badge">POWER & ELECTRICITY</span>
+    <h2 class="sec-title">⚡ <span class="zh">電力</span><span class="en">Power & Electricity</span></h2>
+  </div>
+  <div class="rlabel rl-tw">🇹🇼 <span class="zh">台灣 / 國內</span><span class="en">Taiwan / Domestic</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">台電：半導體及AI用電未來5年需求年均增量創2倍，新增500萬瓩</span><span class="en">Taipower: Semiconductor & AI Power Demand to Double Annual Increments Over Next 5 Years, Adding 5GW</span></div>
+    <div class="nsum"><span class="zh">台電董事長曾文生指2026–2030年新增用電逾500萬瓩（5GW），平均一年增100萬瓩，是過去10年的2至2.5倍；一座晶圓廠基本用電量200MW。2026年興達新燃氣2、3號機與台中新1、2號機共4部機組陸續上線，合計裝置容量約520萬瓩。</span><span class="en">Taipower Chair Zeng Wensheng says 2026–2030 power demand will add over 5GW, averaging 1GW/year—2 to 2.5x the past decade's pace. Each fab requires ~200MW. In 2026, four new gas units at Hsinta and Taichung (total ~5.2GW) are coming online.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.03.02</span><span class="nsource"><span class="zh">來源：</span><a href="https://udn.com/news/story/7238/9354476" target="_blank">聯合新聞網</a> | <a href="https://technews.tw/2026/03/02/ai-electricity-taiwan-two-times/" target="_blank">科技新報</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">標普：2030年台積電用電占全台15.6%，供電吃緊漸成信用風險</span><span class="en">S&P: TSMC Power Use to Hit 15.6% of Taiwan's Total by 2030; Tight Supply Becomes Credit Risk</span></div>
+    <div class="nsum"><span class="zh">標普全球報告指台積電2023年用電占台灣總用電量8.4%、2030年可能達15.6%；「過去十年間，台灣的年度電力備轉容量率大多低於政府的15%目標」，尖峰時段「可能降至6%以下或接近零」，供電穩定性已成台積電信用評級的潛在風險因子。</span><span class="en">S&P Global reports TSMC accounted for 8.4% of Taiwan's power in 2023, potentially reaching 15.6% by 2030. Taiwan's annual reserve margin has often fallen below the government's 15% target, with peak-time margins potentially dropping to "below 6% or near zero," making power supply a potential credit risk factor for TSMC.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2024</span><span class="nsource"><span class="zh">來源：</span><a href="https://money.udn.com/money/story/5612/8268574" target="_blank">經濟日報</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">2029年台灣AI用電需求暴增6.5倍！台電祭「就近電源、光電優先」應戰</span><span class="en">Taiwan's AI Power Demand to Surge 6.5x by 2029; Taipower Deploys "Proximity Power, Solar Priority" Strategy</span></div>
+    <div class="nsum"><span class="zh">台積電董事長魏哲家1月15日法說會表示「擔心台灣的電力供應」；台電配電事故從2012年21,019件降至2025年6,191件。台電策略以「就近電源、光電優先」優先服務科學園區，並加速輸電線路擴建工程。</span><span class="en">TSMC Chair Wei Che-chia expressed concerns about Taiwan's power supply at the January 15 earnings call. Taipower's distribution outages dropped from 21,019 (2012) to 6,191 (2025). Taipower's strategy prioritizes "proximity power sources and solar" to serve science parks, accelerating transmission line expansion.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.01.31</span><span class="nsource"><span class="zh">來源：</span><a href="https://technews.tw/2026/01/31/taiwan-ai-power-policy" target="_blank">科技新報</a></span></div>
+  </div>
+</div>
+
+<!-- ④ 能源政策 -->
+<div class="sec-block s-energy" id="energy">
+  <div class="sec-hdr">
+    <span class="sec-badge">ENERGY POLICY</span>
+    <h2 class="sec-title">🌿 <span class="zh">能源政策</span><span class="en">Energy Policy</span></h2>
+  </div>
+  <div class="rlabel rl-tw">🇹🇼 <span class="zh">台灣 / 國內</span><span class="en">Taiwan / Domestic</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">賴清德宣布核二、核三具重啟條件，能源政策從「非核家園」轉向</span><span class="en">President Lai Announces Nuclear Units 2 & 3 Can Restart; Energy Policy Pivots Away from "Nuclear-Free Homeland"</span></div>
+    <div class="nsum"><span class="zh">賴清德3月21日宣布核二、核三具重啟條件，台電3月底前送核安會審議；核三樂觀估計最快2028年可重啟，核二受乾貯訴訟卡關恐2029年前難以重啟。賴清德強調須符合「核安無虞、核廢有解、社會共識」三原則，同時持續推動再生能源。</span><span class="en">President Lai declared on March 21 that nuclear units 2 and 3 have conditions for restart, with Taipower submitting the application to the Nuclear Safety Commission by March end. Nuclear-3 could restart as early as 2028; Nuclear-2 faces legal obstacles from dry-storage litigation, unlikely before 2029. Lai emphasizes the three prerequisites: nuclear safety, waste solution, and social consensus.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.03.21</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.cna.com.tw/news/aipl/202603220042.aspx" target="_blank">中央社</a> | <a href="https://www.cw.com.tw/article/5140245" target="_blank">天下雜誌</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">台灣發電組合：天然氣47.8%、燃煤35.4%、再生能源13.1%、核能1.1%</span><span class="en">Taiwan Power Mix: Natural Gas 47.8%, Coal 35.4%, Renewables 13.1%, Nuclear 1.1%</span></div>
+    <div class="nsum"><span class="zh">TAISE 2025調查66.1%民眾支持發展核電；美國CSIS兵推顯示台海遭封鎖天然氣儲量10天內耗盡，核燃料棒一次可用約18個月，強化核電重啟的戰略論據。台積電承諾2050年前全球營運100%使用再生能源，2040年達成RE100目標。</span><span class="en">TAISE 2025 survey shows 66.1% of Taiwanese support nuclear power development. CSIS wargames show natural gas reserves would run out within 10 days of a Taiwan Strait blockade, while nuclear fuel rods last ~18 months, strengthening the strategic case for nuclear restart. TSMC targets 100% renewable operations globally by 2050, with the RE100 goal moved forward to 2040.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.gvm.com.tw/article/128931" target="_blank">遠見雜誌</a> | <a href="https://esg.tsmc.com/ch/update/greenManufacturing/caseStudy/37/index.html" target="_blank">台積電ESG官網</a></span></div>
+  </div>
+</div>
+
+<!-- ⑤ 海底電纜 -->
+<div class="sec-block s-cable" id="cable">
+  <div class="sec-hdr">
+    <span class="sec-badge">SUBMARINE CABLES</span>
+    <h2 class="sec-title">🌐 <span class="zh">海底電纜</span><span class="en">Submarine Cables</span></h2>
+  </div>
+  <div class="rlabel rl-tw">🇹🇼 <span class="zh">台灣 / 國內</span><span class="en">Taiwan / Domestic</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">2025年台灣海底電纜斷線17件，2026年截至3月底已6次，立院通過「海纜7法」</span><span class="en">17 Taiwan Submarine Cable Incidents in 2025, 6 More by March 2026; Legislature Passes "7 Cable Laws"</span></div>
+    <div class="nsum"><span class="zh">天下雜誌調查，2025年台灣海底電纜共發生17件斷線或部分斷線事件，2026年截至3月底已發生6次。立法院2025年12月9日三讀通過「海纜7法」，破壞海底電力電纜等故意犯最高處7年徒刑；2026年1月將海纜納入「國家關鍵基礎設施」（CI）。</span><span class="en">CommonWealth reports 17 submarine cable outages in 2025, with 6 more by end of March 2026. The Legislature passed the "7 Cable Laws" on December 9, 2025, imposing up to 7-year sentences for deliberate damage; submarine cables were designated "National Critical Infrastructure" in January 2026.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.03–05</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.cw.com.tw/article/5136369" target="_blank">天下雜誌</a> | <a href="https://www.twreporter.org/a/damaged-undersea-cables-raises-alarm-in-taiwan" target="_blank">報導者</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">台馬3號斷纜，東引1,500人網路全斷；外交部提出RISK海纜倡議</span><span class="en">Taiwan-Matsu Cable 3 Severed, 1,500 Dongyin Residents Lose Internet; MOFA Proposes "RISK" Submarine Cable Initiative</span></div>
+    <div class="nsum"><span class="zh">2026年4月30日「台馬3號」海纜芯線斷裂，造成東引地區網路通訊全斷，影響約1,500人。外交部林部長提出以「RISK」為核心的海纜倡議：風險緩解（Risk mitigation）、資訊共享（Information sharing）、制度改革（System reform）、知識建構（Knowledge building）。</span><span class="en">On April 30, 2026, the Taiwan-Matsu No. 3 cable was severed, cutting all internet to Dongyin and affecting ~1,500 people. Foreign Minister Lin proposed the "RISK" submarine cable initiative: Risk mitigation, Information sharing, System reform, and Knowledge building.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.04.30</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.mofa.gov.tw/News_Content.aspx?n=1020&s=121476" target="_blank">外交部</a> | <a href="https://tfc-taiwan.org.tw/submarine-cable-risks-taiwan-prevent-internet-isolation/" target="_blank">台灣事實查核中心</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">中華電信E2A電纜2028下半年啟用，承載逾192 Tbps；台灣僅24條國際海纜</span><span class="en">CHT E2A Cable to Launch in H2 2028 with 192Tbps+ Capacity; Taiwan Has Only 24 International Cables</span></div>
+    <div class="nsum"><span class="zh">E2A電纜（中華電信、SK Broadband、軟銀、Verizon）全長1.25萬公里，預計2028下半年啟用、承載逾192 Tbps。前立委許毓仁在美中經濟安全委員會指台灣僅24條海纜對外連結，長時間中斷每天經濟損失估達5,500萬美元。</span><span class="en">The E2A cable (CHT, SK Broadband, SoftBank, Verizon) spans 12,500km, targeting H2 2028 launch with 192Tbps+ capacity. Former legislator Jason Hsu told the US-China Economic and Security Review Commission that Taiwan's 24 international cables, if severed long-term, could cost US$55M/day in economic losses.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026</span><span class="nsource"><span class="zh">來源：</span><a href="https://udn.com/news/story/6656/9355445" target="_blank">聯合新聞網</a> | <a href="https://www.thinkingtaiwan.net/article/100350" target="_blank">想想論壇</a></span></div>
+  </div>
+</div>
+
+<!-- ⑥ 土地資源 -->
+<div class="sec-block s-land" id="land">
+  <div class="sec-hdr">
+    <span class="sec-badge">LAND RESOURCES</span>
+    <h2 class="sec-title">🏗️ <span class="zh">土地資源</span><span class="en">Land Resources</span></h2>
+  </div>
+  <div class="rlabel rl-tw">🇹🇼 <span class="zh">台灣 / 國內</span><span class="en">Taiwan / Domestic</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">南科四期沙崙園區環評進入二階，開發與草鴞保育二難</span><span class="en">Tainan Shalun Science Park Phase 4 EIA Enters Stage 2; Development vs. Grass Owl Conservation Dilemma</span></div>
+    <div class="nsum"><span class="zh">環境部5月27日審議「南部科學園區沙崙園區開發計畫環評說明書」並決議進入二階環評；最大爭議為一級保育類台灣特有亞種草鴞（全台僅存約500隻），沙崙為其核心棲地。開發單位保留約175公頃，估計提供3.5萬個就業機會，年產值達2.2兆元。</span><span class="en">The Ministry of Environment ruled on May 27 that Tainan's Shalun Science Park EIA must proceed to Stage 2. The primary controversy is the grass owl (Tyto longimembris), a Class 1 protected subspecies with only ~500 individuals nationwide, with Shalun as core habitat. The development plan preserves ~175 hectares, estimating 35,000 jobs and NT$2.2T annual output.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026.05.27</span><span class="nsource"><span class="zh">來源：</span><a href="https://estate.ltn.com.tw/article/27957" target="_blank">自由電子報</a> | <a href="https://vocus.cc/article/697ee4b3fd897800019cf450" target="_blank">Vocus 南科進度整理</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">竹科寶山二期徵收約90公頃，含客家聚落，台積電新城斷層附近以耐震0.7G規格建廠</span><span class="en">HSP Baoshan Phase 2 Expropriates ~90 Hectares Including Hakka Settlements; TSMC Builds Near Xincheng Fault at 0.7G Seismic Standard</span></div>
+    <div class="nsum"><span class="zh">寶山二期徵收約90公頃，含客家聚落大崎村等，居民自救會多次抗議賤價徵收。環評委員指新城斷層為第一類活動斷層，台積電廠房以耐震0.7G（一般規範2倍）規格打造。竹科管理局規劃社區用地配售現住戶、補助興建納骨塔及保生宮遷移。</span><span class="en">HSP Baoshan Phase 2 expropriates ~90 hectares including Hakka communities like Dachi Village; residents' groups have repeatedly protested undervaluation. EIA commissioners note the Xincheng Fault is a Class 1 active fault; TSMC builds to 0.7G seismic standard—double the normal code. HSP Bureau plans community land sales to current residents and relocation subsidies for the Baosheng Temple.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2021–2026 田野持續追蹤</span><span class="nsource"><span class="zh">來源：</span><a href="https://www.businessweekly.com.tw/Archive/Article?StrId=7008502" target="_blank">商業周刊第1864期</a> | <a href="https://www.nstc.gov.tw/folksonomy/detail/916aa920-19bd-4ac1-938c-dbfc95ed4103?l=CH" target="_blank">國科會NSTC</a></span></div>
+  </div>
+</div>
+
+<!-- ⑦ 公共建設 -->
+<div class="sec-block s-infra" id="infra">
+  <div class="sec-hdr">
+    <span class="sec-badge">PUBLIC INFRASTRUCTURE</span>
+    <h2 class="sec-title">🛣️ <span class="zh">公共建設</span><span class="en">Public Infrastructure</span></h2>
+  </div>
+  <div class="rlabel rl-tw">🇹🇼 <span class="zh">台灣 / 國內</span><span class="en">Taiwan / Domestic</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">客雅水資中心超載110%，二期擴建嚴重落後，2028年預估超載130%</span><span class="en">Keya Water Reclamation Center 110% Overloaded; Phase 2 Behind Schedule; 130% Overload Projected by 2028</span></div>
+    <div class="nsum"><span class="zh">新竹市客雅水資中心日處理汙水量能3萬噸現已超載110%，二期擴建嚴重落後。民進黨竹市議員批評市府行政怠惰。「客雅案」採促參方式，2025/9–2026/6招商、2026/7–2029/12興建，金額約118億元；預計與客雅、竹北、竹東水資中心興建再生水設施，優先供寶山二期高科技廠用水。</span><span class="en">Hsinchu's Keya Water Reclamation Center is 110% overloaded at 30,000 tons/day capacity, with Phase 2 expansion seriously behind schedule. The project uses a BOT model (tender period Sep 2025–Jun 2026; construction Jul 2026–Dec 2029, ~NT$11.8B). New reclaimed water facilities at Keya, Zhubei, and Zhudong centers will prioritize HSP Baoshan Phase 2 hi-tech users.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2025.07 / 2026</span><span class="nsource"><span class="zh">來源：</span><a href="https://money.udn.com/money/story/7307/8861258" target="_blank">經濟日報</a> | <a href="https://vocus.cc/article/68c62b86fd89780001e526cb" target="_blank">Vocus 客雅水資中心整理</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">桃園龍潭再生水廠規劃：業者希望100%採用再生水，分階段到位</span><span class="en">Taoyuan Longtan Reclaimed Water Plant: Industry Targets 100% Reclaimed Water, Phased Rollout</span></div>
+    <div class="nsum"><span class="zh">桃園市長張善政表示業者希望100%採用再生水，將向內政部爭取擴建再生水能量；未來龍潭園區供水採「分階段到位」，初期由台水供水、中長期由桃北及中壢水資中心供應再生水。台電500億電力設備採購同步配合竹科、龍科擴廠供電需求。</span><span class="en">Taoyuan Mayor Chang Shan-cheng says industry wants 100% reclaimed water, and the city will push the Interior Ministry to expand reclaimed water capacity. Longtan park will adopt a phased supply approach, with Taipei-North and Zhongli reclamation centers providing reclaimed water mid-to-long term. Taipower's NT$50B equipment procurement aligns with HSP and Longtan expansion power needs.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2026</span><span class="nsource"><span class="zh">來源：</span><a href="https://udn.com/news/story/7240/9481591" target="_blank">聯合新聞網</a></span></div>
+  </div>
+</div>
+
+<!-- ⑧ 社會影響 -->
+<div class="sec-block s-social" id="social">
+  <div class="sec-hdr">
+    <span class="sec-badge">SOCIAL IMPACT</span>
+    <h2 class="sec-title">👥 <span class="zh">社會影響</span><span class="en">Social Impact</span></h2>
+  </div>
+  <div class="rlabel rl-tw">🇹🇼 <span class="zh">台灣 / 國內</span><span class="en">Taiwan / Domestic</span></div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">護國神山用水驚人：13萬新竹人公投通過「喝好水」，頭前溪汙染源仍在</span><span class="en">"Sacred Mountain" Water Demand Shocks Locals; 130,000 Hsinchu Residents Vote for "Clean Water"; Touqian River Pollution Sources Remain</span></div>
+    <div class="nsum"><span class="zh">2021年「喝好水」公投獲13萬1,816票通過，新竹市2022年4月制訂《廢水及汙水排放管理自治條例》，但無法跨縣市規範新竹縣排污。台灣乾淨水行動聯盟與清大合作發現頭前溪底泥鎳含量逾國內底泥品質指標下限，汙染源問題仍未根本解決。</span><span class="en">The "Clean Water" referendum passed in 2021 with 131,816 votes; Hsinchu City enacted the Wastewater Management Autonomy Act in April 2022, but it cannot regulate Hsinchu County. The Clean Water Alliance and NTHU found nickel levels in Touqian River sediment exceeding domestic quality thresholds; root causes of pollution remain unresolved.</span></div>
+    <div class="nmeta"><span class="ndate-badge">2021–2024</span><span class="nsource"><span class="zh">來源：</span><a href="https://udn.com/news/story/124079/8020026" target="_blank">聯合新聞網</a> | <a href="https://new7.storm.mg/article/4173745" target="_blank">新新聞</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">「社會理性的建構與重構」：清華大學碩論記錄「我們要喝乾淨水行動聯盟」運動軌跡</span><span class="en">"Constructing Social Rationality": NTHU Thesis Documents the Clean Water Action Alliance Movement</span></div>
+    <div class="nsum"><span class="zh">國立清華大學社會學研究所碩士論文以新竹「我們要喝乾淨水行動聯盟」為研究對象，援引Beck「社會理性vs.科學理性」框架分析環境運動正當性。此研究是本博士論文關於農業與科技用水衝突的社會學理論基礎之一。</span><span class="en">An NTHU Sociology MA thesis examines the Hsinchu Clean Water Action Alliance, applying Beck's "social rationality vs. scientific rationality" framework to analyze the legitimacy of environmental movements. This research provides a key sociological theoretical foundation for the doctoral thesis on agricultural vs. tech water use conflict.</span></div>
+    <div class="nmeta"><span class="ndate-badge">碩士論文</span><span class="nsource"><span class="zh">來源：</span><a href="https://etd.lib.nthu.edu.tw/detail/3d25db6b1ab2052009c1a5ae968d0d92/" target="_blank">清華大學論文庫</a></span></div>
+  </div>
+  <div class="nitem">
+    <div class="ntitle"><span class="zh">香山綠牡蠣事件：竹科廢水排放30年污染紀錄，2009年起禁止養殖</span><span class="en">Xiangshan Green Oyster Incident: 30-Year Record of HSP Wastewater Pollution; Aquaculture Banned Since 2009</span></div>
+    <div class="nsum"><span class="zh">香山牡蠣銅含量從1980–85年201微克/克升至1997–98年1,351微克/克，與竹科產值成正比，是科技園區環境外部性的早期在地案例。漁業署2009年起陸續收購銷毀並禁止養殖，至今是本研究文獻回顧的核心歷史議題。</span><span class="en">Xiangshan oyster copper content rose from 201 μg/g (1980–85) to 1,351 μg/g (1997–98), correlating with HSP output—an early local case of science park environmental externalities. The Fisheries Agency has purchased and destroyed oysters and banned aquaculture since 2009; this remains a core historical case in the doctoral thesis literature review.</span></div>
+    <div class="nmeta"><span class="ndate-badge">1980年代–至今</span><span class="nsource"><span class="zh">來源：</span><a href="https://zh.wikipedia.org/zh-hant/%E7%B6%A0%E7%89%A1%E8%A0%A3%E4%BA%8B%E4%BB%B6" target="_blank">維基百科</a> | <a href="https://ourisland.pts.org.tw/content/2185" target="_blank">公視我們的島</a></span></div>
+  </div>
+</div>
+
+<!-- ⑨ 文獻資料庫 -->
+<div class="sec-block s-lit" id="lit">
+  <div class="sec-hdr">
+    <span class="sec-badge">LITERATURE DATABASE</span>
+    <h2 class="sec-title">📚 <span class="zh">本日文獻資料庫</span><span class="en">Today's Literature Database</span></h2>
+  </div>
+
+  <h3 style="font-size:14px;font-weight:600;color:var(--text2);margin-bottom:.75rem;margin-top:1rem">🎓 <span class="zh">台灣碩博士論文（相關主題）</span><span class="en">Taiwan Theses & Dissertations</span></h3>
+  <div style="overflow-x:auto">
+  <table class="lit-table">
+    <thead><tr><th><span class="zh">類型</span><span class="en">Type</span></th><th><span class="zh">論文題目</span><span class="en">Title</span></th><th><span class="zh">作者／學校／年</span><span class="en">Author/School/Year</span></th><th><span class="zh">摘要</span><span class="en">Abstract</span></th><th><span class="zh">連結</span><span class="en">Link</span></th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="lbadge lb-thesis">碩論</span></td>
+        <td><span class="zh">社會理性的建構與重構：新竹「我們要喝乾淨水行動聯盟」的運動軌跡</span><span class="en">Constructing Social Rationality: The Hsinchu Clean Water Action Alliance Movement</span></td>
+        <td style="white-space:nowrap"><span class="zh">清華大學社會學所</span><span class="en">NTHU Sociology</span></td>
+        <td class="lit-abstract"><span class="zh">援引Beck社會理性框架，分析新竹喝好水公投與乾淨水行動聯盟的環境運動正當性建構過程，是本研究社會影響分析的核心理論基礎。</span><span class="en">Applies Beck's social rationality framework to analyze the Hsinchu "Clean Water" referendum and the Clean Water Action Alliance's legitimacy-building process.</span></td>
+        <td><a class="lit-link" href="https://etd.lib.nthu.edu.tw/detail/3d25db6b1ab2052009c1a5ae968d0d92/" target="_blank">NTHU ↗</a></td>
+      </tr>
+      <tr>
+        <td><span class="lbadge lb-thesis">博論</span></td>
+        <td><span class="zh">頭前溪流域治理數位轉型：開放資料民主行動模型（DAMODU）</span><span class="en">Digital Governance Transformation of Touqian River Basin: DAMODU Model</span></td>
+        <td style="white-space:nowrap"><span class="zh">台灣大學建築與城鄉所</span><span class="en">NTU Urban Planning</span> · 2023</td>
+        <td class="lit-abstract"><span class="zh">運用開放資料民主行動模型分析水利署與數位公民社群LASS在頭前溪的協力治理，直接對應本研究的水資源治理分析。</span><span class="en">Uses the DAMODU model to analyze collaborative governance between WRA and civic tech community LASS on the Touqian River—directly relevant to this research's water governance analysis.</span></td>
+        <td><a class="lit-link" href="https://tdr.lib.ntu.edu.tw/jspui/retrieve/da3b71e5-25f5-4e56-8b75-498a0cbfb906/ntu-112-1.pdf" target="_blank">NTU ↗</a></td>
+      </tr>
+      <tr>
+        <td><span class="lbadge lb-thesis">碩論</span></td>
+        <td><span class="zh">科學園區開發與農地徵收的政治經濟分析——以竹南大埔案為例</span><span class="en">Political Economy of Science Park Development and Agricultural Land Expropriation: The Zhunan Dapu Case</span></td>
+        <td style="white-space:nowrap"><span class="zh">台灣大學政治系</span><span class="en">NTU Political Science</span> · 2013</td>
+        <td class="lit-abstract"><span class="zh">從政治經濟學視角分析科學園區農地徵收公益性爭議，為竹科寶山擴廠客家社區影響研究提供重要比較框架。</span><span class="en">Analyzes the public-interest disputes of science park farmland expropriation from a political economy perspective, providing a key comparative framework for the HSP Baoshan Hakka community impact research.</span></td>
+        <td><a class="lit-link" href="https://tdr.lib.ntu.edu.tw/jspui/bitstream/123456789/5946/1/ntu-102-1.pdf" target="_blank">NTU ↗</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 style="font-size:14px;font-weight:600;color:var(--text2);margin-bottom:.75rem;margin-top:1.5rem">📖 <span class="zh">台灣及國際學術期刊</span><span class="en">Taiwan & International Academic Journals</span></h3>
+  <div style="overflow-x:auto">
+  <table class="lit-table">
+    <thead><tr><th><span class="zh">類型</span><span class="en">Type</span></th><th>Title</th><th><span class="zh">來源</span><span class="en">Source</span></th><th><span class="zh">摘要</span><span class="en">Abstract</span></th><th><span class="zh">連結</span><span class="en">Link</span></th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="lbadge lb-journal">台灣期刊</span></td>
+        <td>On the Tailor-Made Water Governance Mechanism for Taiwan's Semiconductor Industry</td>
+        <td style="white-space:nowrap">Water Resources and Industry · 2024</td>
+        <td class="lit-abstract">探討針對台灣半導體產業設計的水資源治理新機制，強調區域整合如何達到最適水資源管理。</td>
+        <td><a class="lit-link" href="https://www.sciencedirect.com/science/article/pii/S2212371724000143" target="_blank">ScienceDirect ↗</a></td>
+      </tr>
+      <tr>
+        <td><span class="lbadge lb-intl">國際期刊</span></td>
+        <td>Water Strategies and Practices for Sustainable Development in the Semiconductor Industry</td>
+        <td style="white-space:nowrap">Sustainable Horizons · 2022</td>
+        <td class="lit-abstract">調查24家半導體企業永續報告書的水策略，回收、再利用與復原為主要策略，逆滲透（RO）為主導技術。</td>
+        <td><a class="lit-link" href="https://www.sciencedirect.com/science/article/pii/S2666445322000277" target="_blank">ScienceDirect ↗</a></td>
+      </tr>
+      <tr>
+        <td><span class="lbadge lb-intl">國際期刊</span></td>
+        <td>Semiconductor Manufacturing Wastewater Challenges and Solutions via Printed Electronics</td>
+        <td style="white-space:nowrap">iScience · 2025</td>
+        <td class="lit-abstract">探討半導體製造廢水的危害與印刷電子技術的潛在解方，提出新的廢水處理路徑。</td>
+        <td><a class="lit-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12510042/" target="_blank">NIH ↗</a></td>
+      </tr>
+      <tr>
+        <td><span class="lbadge lb-report">報告</span></td>
+        <td>Why the Future of Chips Depends on Water</td>
+        <td style="white-space:nowrap">Robeco · 2026.03</td>
+        <td class="lit-abstract">全球40%半導體廠位於高缺水壓力地區，分析台積電、三星、英特爾等主要廠商水資源管理現況與供應鏈風險。</td>
+        <td><a class="lit-link" href="https://www.robeco.com/en-int/insights/2026/03/why-the-future-of-chips-depends-on-water" target="_blank">Robeco ↗</a></td>
+      </tr>
+      <tr>
+        <td><span class="lbadge lb-report">報告</span></td>
+        <td>臺灣半導體產業水資源與電力使用分析報告</td>
+        <td style="white-space:nowrap">DSET · 2025.02</td>
+        <td class="lit-abstract">分析科學園區所在地區水資源供需結構現況（2021）與2036年推估，為本研究提供完整的數據框架。</td>
+        <td><a class="lit-link" href="https://dset.tw/wp-content/uploads/2025/02/%E6%B0%A3%E5%80%99%E8%AE%8A%E9%81%B7%E8%88%87%E5%9F%BA%E7%A4%8E%E8%A8%AD%E6%96%BD%E9%9F%8C%E6%80%A7%EF%BC%9A%E8%87%BA%E7%81%A3%E5%8D%8A%E5%B0%8E%E9%AB%94%E7%94%A2%E6%A5%AD%E6%B0%B4%E8%B3%87%E6%BA%90%E8%88%87%E9%9B%BB%E5%8A%9B%E4%BD%BF%E7%94%A8%E5%88%86%E6%9E%90%E5%A0%B1%E5%91%8A.pdf" target="_blank">DSET ↗</a></td>
+      </tr>
+      <tr>
+        <td><span class="lbadge lb-intl">Taiwan Insight</span></td>
+        <td>Water Nexus: Can Semiconductors and Sustainability Coexist in Taiwan?</td>
+        <td style="white-space:nowrap">Taiwan Insight · 2025.11</td>
+        <td class="lit-abstract">分析台積電水能源關聯（water-energy nexus），台灣半導體產業2024年價值1,656億美元，台積電每日用水約15萬噸，占全國用電6.4%。</td>
+        <td><a class="lit-link" href="https://taiwaninsight.org/2025/11/05/water-nexus-can-semiconductors-and-sustainability-coexist-in-taiwan/" target="_blank">Taiwan Insight ↗</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 style="font-size:14px;font-weight:600;color:var(--text2);margin-bottom:.75rem;margin-top:1.5rem">🔍 <span class="zh">學術資料庫快速連結</span><span class="en">Quick Links to Academic Databases</span></h3>
+  <div class="db-grid">
+    <a class="db-card" href="https://ndltd.ncl.edu.tw" target="_blank"><div><div class="db-name"><span class="zh">台灣博碩士論文網</span><span class="en">Taiwan NDLTD</span></div><div class="db-sub"><span class="zh">國內碩博士論文</span><span class="en">Taiwan Theses</span></div></div><span>↗</span></a>
+    <a class="db-card" href="https://scholar.google.com" target="_blank"><div><div class="db-name">Google Scholar</div><div class="db-sub"><span class="zh">國際期刊搜尋</span><span class="en">Int'l Journals</span></div></div><span>↗</span></a>
+    <a class="db-card" href="https://www.airitilibrary.com" target="_blank"><div><div class="db-name"><span class="zh">華藝線上圖書館</span><span class="en">Airiti Library</span></div><div class="db-sub"><span class="zh">台灣期刊</span><span class="en">Taiwan Journals</span></div></div><span>↗</span></a>
+    <a class="db-card" href="https://www.webofscience.com" target="_blank"><div><div class="db-name">Web of Science</div><div class="db-sub"><span class="zh">高影響力期刊</span><span class="en">High-Impact Journals</span></div></div><span>↗</span></a>
+    <a class="db-card" href="https://www.proquest.com" target="_blank"><div><div class="db-name">ProQuest</div><div class="db-sub"><span class="zh">國外博碩士論文</span><span class="en">Int'l Theses</span></div></div><span>↗</span></a>
+    <a class="db-card" href="https://udndata.com" target="_blank"><div><div class="db-name"><span class="zh">聯合知識庫</span><span class="en">UDN Knowledge</span></div><div class="db-sub"><span class="zh">台灣歷史新聞</span><span class="en">Historical News</span></div></div><span>↗</span></a>
+  </div>
+</div>
+
+</div>
+<footer><span class="zh">每日由 AI 輔助整理 · 國立陽明交通大學 客家文化學院 · 指導教授：莊雅仲 · PhD 2024–</span><span class="en">AI-assisted daily research · NYCU Hakka College · Advisor: Prof. Zhuang Yazhong · PhD 2024–</span></footer>
+<script>
+function toggleLang(){const r=document.getElementById('html-root');r.lang=r.lang==='zh-TW'?'en':'zh-TW';}
+const slinks=document.querySelectorAll('.slink');
+const secs=document.querySelectorAll('.sec-block[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur=s.id;});
+  slinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+});
+</script>
+</body>
+</html>
