@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>研究報告 — 2026年6月5日</title>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --accent: #2b6cb0;
+      --accent-light: #ebf4ff;
+      --border: #cbd5e0;
+      --text: #2d3748;
+      --muted: #718096;
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --semi:  #553c9a; --semi-l: #faf5ff;
+      --water: #2b6cb0; --water-l: #ebf8ff;
+      --power: #c05621; --power-l: #fffaf0;
+      --energy:#276749; --energy-l:#f0fff4;
+      --cable: #2c7a7b; --cable-l: #e6fffa;
+      --land:  #744210; --land-l: #fffbeb;
+      --infra: #702459; --infra-l: #fff5f7;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px}
+
+    header{background:var(--primary);color:#fff;padding:2rem 2.5rem 1.5rem}
+    header .meta{font-size:.75rem;opacity:.65;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem}
+    header h1{font-size:1.65rem;font-weight:700}
+    header p.sub{margin-top:.3rem;font-size:.88rem;opacity:.8}
+
+    nav{background:var(--accent);padding:0 1.5rem;display:flex;flex-wrap:wrap;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+    nav a{color:rgba(255,255,255,.85);text-decoration:none;padding:.65rem .75rem;font-size:.78rem;font-weight:500;border-bottom:3px solid transparent;white-space:nowrap;transition:all .15s}
+    nav a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.6)}
+
+    main{max-width:1060px;margin:2rem auto;padding:0 1.5rem 5rem}
+
+    .section{margin-bottom:3.5rem}
+    .section-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--border)}
+    .tag{display:inline-block;padding:.25rem .7rem;border-radius:4px;font-size:.7rem;font-weight:700;letter-spacing:.05em;color:#fff;text-transform:uppercase}
+    .section-header h2{font-size:1.2rem;font-weight:700;color:var(--primary)}
+
+    .zone-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .75rem;border-radius:4px;display:inline-block;margin-bottom:.75rem}
+    .zone-tw{background:#fff3cd;color:#856404;border:1px solid #ffc107}
+    .zone-intl{background:#cfe2ff;color:#084298;border:1px solid #9ec5fe}
+
+    .zone{margin-bottom:1.5rem}
+    .news-grid{display:grid;gap:.85rem}
+    .news-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:6px;padding:1rem 1.1rem}
+    .news-card h3{font-size:.93rem;font-weight:600;margin-bottom:.35rem;color:var(--primary)}
+    .news-card p{font-size:.87rem;color:var(--text)}
+    .news-card .src{margin-top:.5rem;font-size:.76rem;color:var(--muted)}
+    .news-card .src a{color:var(--accent);text-decoration:none}
+    .news-card .src a:hover{text-decoration:underline}
+
+    .box{border-radius:6px;padding:1rem 1.25rem;margin-bottom:1rem}
+    .box h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem}
+    .box p{font-size:.88rem}
+    .box p+p{margin-top:.55rem}
+    .analysis{background:var(--accent-light);border:1px solid #bee3f8}
+    .analysis h4{color:var(--accent)}
+    .tw-box{background:#fffaf0;border:1px solid #f6ad55;border-left:4px solid #ed8936}
+    .tw-box h4{color:#c05621}
+
+    .semi  .news-card{border-left-color:var(--semi)}  .semi  .tag{background:var(--semi)}
+    .water .news-card{border-left-color:var(--water)} .water .tag{background:var(--water)}
+    .power .news-card{border-left-color:var(--power)} .power .tag{background:var(--power)}
+    .energy .news-card{border-left-color:var(--energy)}.energy .tag{background:var(--energy)}
+    .cable .news-card{border-left-color:var(--cable)} .cable .tag{background:var(--cable)}
+    .land  .news-card{border-left-color:var(--land)}  .land  .tag{background:var(--land)}
+    .infra .news-card{border-left-color:var(--infra)} .infra .tag{background:var(--infra)}
+
+    footer{text-align:center;font-size:.76rem;color:var(--muted);padding:2rem;border-top:1px solid var(--border);margin-top:3rem}
+    @media(max-width:600px){header{padding:1.5rem 1rem}main{padding:0 1rem 3rem}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="meta">每日研究報告 · Daily Research Briefing</div>
+  <h1>科技、資源與政策動態報告</h1>
+  <p class="sub">2026 年 6 月 5 日（星期五）｜涵蓋：國內＋國際，7 大主題</p>
+</header>
+
+<nav>
+  <a href="#semi">💠 半導體</a>
+  <a href="#water">💧 水資源</a>
+  <a href="#power">⚡ 電力</a>
+  <a href="#energy">🌿 能源政策</a>
+  <a href="#cable">🌐 海底電纜</a>
+  <a href="#land">🏗️ 土地資源</a>
+  <a href="#infra">🛣️ 公共建設</a>
+</nav>
+
+<main>
+
+<!-- ① 半導體 -->
+<section class="section semi" id="semi">
+  <div class="section-header">
+    <span class="tag">Semiconductors</span>
+    <h2>半導體（Semiconductors）</h2>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-tw">🇹🇼 台灣 / 國內</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>TSMC CEO：AI 晶片供應短缺將持續數年</h3>
+        <p>台積電執行長魏哲家於 6 月 4 日向 Bloomberg 表示，AI 驅動的全球晶片需求在未來數年內將持續超過供應量，台積電產能仍是最大瓶頸。此言論進一步確認半導體供應鏈在 AI 基礎建設浪潮下的長期緊俏態勢，也預示台積電的定價能力與資本支出計畫將持續受到市場高度關注。</p>
+        <div class="src">來源：<a href="https://www.bloomberg.com/news/articles/2026-06-04/tsmc-ceo-warns-chip-supply-won-t-meet-ai-fueled-demand-for-years" target="_blank">Bloomberg</a></div>
+      </div>
+      <div class="news-card">
+        <h3>台灣半導體市場 2026 年預估達 $1.5 兆美元，AI 記憶體成最大推力</h3>
+        <p>全球半導體貿易統計組織（WSTS）於 6 月 2 日大幅上修 2026 年全球市場預估至 1.5112 兆美元，年增 89.9%，首度突破兆美元門檻。其中記憶體半導體預計暴增約 3.5 倍至 8,039 億美元，主因 AI 訓練所需的高頻寬記憶體（HBM）需求爆發性成長，台灣 TSMC 與封測廠商直接受益。</p>
+        <div class="src">來源：<a href="https://anysilicon.com/news/global-semiconductor-market-surges-beyond-usd-1-5-trillion-in-2026-driven-by-extraordinary-memory-expansion/" target="_blank">AnySilicon</a>｜<a href="https://finance.biggo.com/news/RtpDh54BNl__-4_GKeRd" target="_blank">BigGo Finance</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-intl">🌍 國際</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>SIA-Deloitte 報告：AI 伺服器機架 95% 價值由半導體構成</h3>
+        <p>SIA 與 Deloitte 於 6 月 1 日聯合發布報告，指出半導體涵蓋 AI 伺服器機架超過 95% 的內容價值，以及建設與運營 AI 資料中心所需資本支出的 50% 以上。報告強調異質整合技術是維持 AI 算力成長的關鍵路徑，也凸顯晶片供應鏈對整體 AI 產業生態的核心地位。</p>
+        <div class="src">來源：<a href="https://www.semiconductors.org/new-report-finds-semiconductors-account-for-95-of-an-ai-data-server-racks-value-encompassing-the-full-stack-of-chip-technologies/" target="_blank">SIA</a></div>
+      </div>
+      <div class="news-card">
+        <h3>Lightmatter 加入 NVIDIA NVLink Fusion 生態系，光子運算邁向商用</h3>
+        <p>光子運算領導廠商 Lightmatter 宣布加入 NVIDIA NVLink Fusion 生態系統，將推出兼容 NVIDIA 光學與 SerDes 技術的 Co-Packaged Optics（CPO）及 Near-Packaged Optics（NPO）產品。光子互連技術被視為解決 AI 資料中心高功耗與頻寬瓶頸的重要解方，此合作意味光子晶片距離大規模商用更近一步。</p>
+        <div class="src">來源：<a href="https://www.semiconductors.org/news-events/latest-news/" target="_blank">SIA</a></div>
+      </div>
+      <div class="news-card">
+        <h3>晶片股 2026 年強勢領漲，AI 貿易持續吸引機構資金</h3>
+        <p>半導體族群在繼 2023–2025 年連續三年大漲後，2026 年仍為市場焦點。AI 推論需求擴散至邊緣裝置、自動駕駛與機器人等新應用，帶動 Broadcom、Marvell、AMD 等廠商股價持續創高，市場估值雖偏高但基本面動能尚未衰退。</p>
+        <div class="src">來源：<a href="https://www.cnbc.com/2026/01/02/chipmakers-2026-ai-trade.html" target="_blank">CNBC</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>全球半導體市場在 AI 算力需求驅動下創下歷史規模，台灣在整個供應鏈中扮演不可或缺的角色。TSMC CEO 直言供應缺口將延續數年，意味先進製程的議價能力與資本支出擴張計畫具有高度確定性，台灣相關產業鏈廠商受惠明確。</p>
+    <p>然而市場估值持續走高、地緣政治出口管制不確定性，以及電力與水資源供應壓力，是台灣半導體產業在中長期須持續應對的三大結構性挑戰。</p>
+  </div>
+</section>
+
+<!-- ② 水資源 -->
+<section class="section water" id="water">
+  <div class="section-header">
+    <span class="tag">Water Resources</span>
+    <h2>水資源（Water Resources）</h2>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-tw">🇹🇼 台灣 / 國內</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>科技業用水依賴度研究：台灣半導體廠水資源風險位居全球前列</h3>
+        <p>TNFD（自然相關財務揭露工作組）最新案例研究指出，台灣科技業對淡水資源的依賴程度在全球科技重鎮中屬最高風險等級，氣候變遷造成的乾旱頻率上升將直接衝擊生產穩定性。報告建議半導體廠商加快推動水回收閉路循環系統，並在環評報告中揭露具體的水資源使用效率指標。</p>
+        <div class="src">來源：<a href="https://tnfd.global/wp-content/uploads/2026/02/Case-study_Water-dependency-of-the-tech-sector_DIGITAL.pdf" target="_blank">TNFD</a></div>
+      </div>
+      <div class="news-card">
+        <h3>台灣國際水週報告警示：晶片產業擴張對公共供水體系形成結構性壓力</h3>
+        <p>台灣國際水週最新研究報告指出，半導體廠持續擴建使台灣水資源管理已面臨極限壓力。若缺乏具約束力的產業用水總量管制，未來台灣晶片產業的資源競爭力將面臨嚴峻考驗，建議政府加速推動分散式再生水設施並設定明確效率標準。</p>
+        <div class="src">來源：<a href="https://www.taiwanintlwaterweek.com/en/news/357AFC12AA3A2AC9/list-info.html" target="_blank">台灣國際水週</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-intl">🌍 國際</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>加州水資源部宣布 SWP 分配率提升，惟仍低於滿額</h3>
+        <p>加州水資源部宣布州立供水計畫（SWP）2026 年分配率調升，主因 4–5 月豐沛降雨補充水庫蓄量。然而分配率仍低於滿額，進入夏季用水高峰期前，水資源管理局呼籲持續節水、提升農業灌溉效率，並關注氣候變遷造成的長期供水不確定性。</p>
+        <div class="src">來源：<a href="https://water.ca.gov/News/News-Releases" target="_blank">California DWR</a></div>
+      </div>
+      <div class="news-card">
+        <h3>Water Research Foundation 年會 6 月底在華盛頓舉行，聚焦氣候調適與智慧水務</h3>
+        <p>水資源研究基金會（WRF）將於 6 月 21–24 日在美國華盛頓 DC 舉辦年度峰會，主題涵蓋氣候調適、老舊管網更新與聯邦法規遵循。全球水務公用事業領導人將就資金缺口、技術創新及 AI 輔助水務管理展開討論，成果將影響北美水政策方向。</p>
+        <div class="src">來源：<a href="https://www.waterrf.org/" target="_blank">Water Research Foundation</a></div>
+      </div>
+      <div class="news-card">
+        <h3>科羅拉多河下游社區面臨嚴峻缺水威脅，歷史性法律爭端恐一觸即發</h3>
+        <p>科羅拉多河下游社區面臨嚴重供水危機，積雪覆蓋率創歷史低點使水庫蓄水量持續下降。各州水權分配爭議升溫，部分下游用水者揚言提起訴訟，外界認為此事件可能引發美國西部水資源管理的重大政策變革，對農業與城市用水優先順序的重新界定構成壓力。</p>
+        <div class="src">來源：<a href="https://www.circleofblue.org/" target="_blank">Circle of Blue</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>全球科技業的水資源依賴問題正從企業永續議題升格為國家層級的供應鏈風險。台灣作為全球晶片製造中心，其水資源管理能力已直接關係到半導體供應鏈穩定性，是國際客戶與投資人的重要評估指標。</p>
+    <p>短期內，加速推動工業再生水、海水淡化及用水效率管制，是緩解台灣科技業用水壓力的最可行路徑。長期而言，氣候調適型水資源政策與基礎設施投資將成為台灣維持競爭力的關鍵支柱。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>台積電南科再生水廠 2026 年可每日供應 3.6 萬噸工業用水，同時已簽約每日 4.5 萬噸海水淡化供應，積極降低對公共水源的依賴。政府亦正研議將「工業用水效率」納入科學園區環評的必要審查項目，以因應半導體產業持續擴張帶來的供水壓力。</p>
+  </div>
+</section>
+
+<!-- ③ 電力資源 -->
+<section class="section power" id="power">
+  <div class="section-header">
+    <span class="tag">Power &amp; Electricity</span>
+    <h2>電力資源（Power &amp; Electricity）</h2>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-tw">🇹🇼 台灣 / 國內</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>TSMC 目標 2028 年 A14 製程節電 30%，能源效率成先進製程核心競爭力</h3>
+        <p>台積電資深副總裁 Kevin Zhang 向 Reuters 表示，AI 算力需求使能源效率成為晶片開發的優先課題。從現行 N2 製程到規劃中的 A14 世代，TSMC 計畫每一代功耗降低 30% 並提升 20% 以上運算效能。此目標不僅反映 AI 資料中心電力成本壓力，也顯示台積電將「效能/瓦」作為差異化競爭指標。</p>
+        <div class="src">來源：<a href="https://www.sahmcapital.com/news/content/taiwan-semiconductor-targets-30-power-savings-to-fight-the-ai-energy-crisis-report-2026-05-29" target="_blank">Sahm Capital</a></div>
+      </div>
+      <div class="news-card">
+        <h3>台灣仍有 97% 能源仰賴進口，地緣政治與中東衝突加劇供應鏈風險</h3>
+        <p>台灣能源進口依存度高達 97%，中東衝突導致液化天然氣（LNG）供應緊縮，加上潛在的海峽封鎖風險，使台灣電力供應鏈面臨多重威脅。專家呼籲台灣加速推動能源多元化，包括擴大離岸風電、核能延役討論及備援儲能設施建設。</p>
+        <div class="src">來源：<a href="https://dominotheory.com/taiwan-tech-update-june-3-2026/" target="_blank">Domino Theory</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-intl">🌍 國際</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>AI 資料中心爆炸性成長威脅美國最大電網 PJM 穩定，聯邦考慮拆分</h3>
+        <p>聯邦官員提出拆分 PJM 互聯電網（服務 13 州、美國最大電網運營商）的建議，原因是 AI 資料中心湧入使電力供應持續緊張，推高電價並引發政治反彈。PJM 2026/27 年容量拍賣清算價格達歷史最高的每兆瓦日 $329.17，顯示電力基礎設施建設嚴重落後於 AI 算力需求。</p>
+        <div class="src">來源：<a href="https://www.bloomberg.com/news/articles/2026-06-04/ai-data-center-boom-risks-breakup-of-biggest-us-power-grid-operator" target="_blank">Bloomberg</a></div>
+      </div>
+      <div class="news-card">
+        <h3>德州 ERCOT 預計今夏尖峰用電量創新高，AI 與加密挖礦推升需求近 10%</h3>
+        <p>德州電力可靠委員會（ERCOT）警告，2026 年夏季尖峰用電量預估達 92,211 MW，較去年高峰值年增近 10%，主因 AI 資料中心與加密貨幣挖礦業的工業用電需求快速攀升。德州電網在極端氣候下的供電韌性再度成為輿論焦點。</p>
+        <div class="src">來源：<a href="https://www.fox4news.com/news/ercot-summer-power-demand-record-possible-2026" target="_blank">Fox4 News</a></div>
+      </div>
+      <div class="news-card">
+        <h3>美國電力業 2026 年投資電網 $2,390 億，全球十年電網升級需 $5.8 兆</h3>
+        <p>美國電力企業今年預計投入 2,390 億美元強化與智慧化電網基礎設施，IEA 預估 2026–2035 年間全球電網升級總投資將達 5.8 兆美元，美國單獨承擔約 1 兆美元。電網現代化成為 AI 時代最關鍵的基礎建設競賽之一。</p>
+        <div class="src">來源：<a href="https://www.eei.org/News/news/All/2026-cea-grid-report" target="_blank">EEI / CEA Grid Report</a>｜<a href="https://www.iea.org/reports/electricity-2026/grids" target="_blank">IEA</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>AI 算力需求正前所未有地考驗全球電力基礎設施。美國最大電網 PJM 面臨拆分討論、德州 ERCOT 尖峰需求屢創新高，反映出全球電網建設速度遠追不上 AI 資料中心擴張。電力供應瓶頸已成為 AI 產業最重要的非技術性制約因素。</p>
+    <p>台灣在高度依賴進口能源的結構下，AI 相關電力需求的快速增加，使政府必須在能源安全、電網穩定與產業發展之間尋求更精準的政策平衡，包括再生能源加速建置與需量管理機制的強化。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>台積電已與 Northland Power 簽署 30 年 PPA 取得海龍 2A 離岸風場全部 294 MW 電力輸出，預計 2026 年底完成行政手續後啟動供電，是台灣史上最大單筆再生能源購電協議。與此同時，Eco Wave Power 的波浪能源技術在蘇澳港的台灣先導計畫持續推進，並在 NVIDIA GTC 主題演講中獲得重點展示，顯示台灣正積極探索多元再生能源。</p>
+  </div>
+</section>
+
+<!-- ④ 能源政策 -->
+<section class="section energy" id="energy">
+  <div class="section-header">
+    <span class="tag">Energy Policy</span>
+    <h2>能源政策（Energy Policy）</h2>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-intl">🌍 國際</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>中東衝突引發全球能源危機，IEA 啟動史上最大規模緊急石油儲備釋放</h3>
+        <p>中東地區衝突衝擊全球燃料市場，IEA 協調各成員國啟動史上最大規模緊急石油儲備釋放行動，並敦促各國促進燃料轉換，包括加速擴大再生能源供應以減少對天然氣的依賴。此次危機凸顯過度依賴化石燃料進口的結構性脆弱性，並使多國政府加速重新評估能源自主策略。</p>
+        <div class="src">來源：<a href="https://www.iea.org/data-and-statistics/data-tools/2026-energy-crisis-policy-response-tracker" target="_blank">IEA</a></div>
+      </div>
+      <div class="news-card">
+        <h3>美國 FERC 宣布將於 6 月底前完成大負載互連程序，回應能源部長指示</h3>
+        <p>美國聯邦能源管制委員會（FERC）宣布將於 2026 年 6 月底前完成大型負載互連程序，此舉回應美國能源部長 Chris Wright 的指示，旨在加速 AI 資料中心電力接入電網的審核流程。此政策調整將對美國數據中心建設時程與電網互連隊列產生重大影響。</p>
+        <div class="src">來源：<a href="https://www.energy.gov/listings/energy-news" target="_blank">U.S. Department of Energy</a></div>
+      </div>
+      <div class="news-card">
+        <h3>BloombergNEF 2026 年新能源展望：再生能源加速，但政策不確定性壓抑投資</h3>
+        <p>BloombergNEF 發布《2026 新能源展望》，預測全球再生能源裝機仍將加速成長，但部分市場的政策不確定性（尤其是美國補貼政策走向）正使投資決策趨於保守。太陽能與儲能系統成本持續下降，海上風電則因供應鏈成本與利率壓力面臨較大挑戰。</p>
+        <div class="src">來源：<a href="https://about.bnef.com/insights/clean-energy/new-energy-outlook/" target="_blank">BloombergNEF</a></div>
+      </div>
+      <div class="news-card">
+        <h3>波多黎各電網緊急命令更新，美國 DOE 強化颶風季供電韌性</h3>
+        <p>美國能源部更新兩項緊急命令以強化波多黎各電網，在夏季颶風季節前加強備援能力與電力穩定供應。波多黎各電網脆弱性長期受到關注，此舉也反映聯邦政府對氣候韌性基礎設施建設的持續重視。</p>
+        <div class="src">來源：<a href="https://www.energy.gov/state-american-energy-promises-made-promises-kept" target="_blank">U.S. DOE</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>中東能源危機使全球多國被迫重新審視能源自主性，IEA 的緊急協調行動彰顯多邊能源治理機制在危機時刻的重要性。然而緊急應對措施治標不治本，各國仍需在能源轉型與供應安全之間取得長期平衡。</p>
+    <p>美國 FERC 加速大負載互連審核，將為 AI 資料中心建設提速創造有利條件，但電網建設的實體瓶頸短期內難以消解。對台灣而言，中東衝突導致 LNG 供應收緊，再次提醒能源多元化政策的迫切性，能源政策決策需同時考量地緣政治情境。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>台灣能源進口依存度達 97%，中東能源危機直接衝擊台灣 LNG 採購成本。政府持續推動「能源轉型三支柱」——再生能源擴大、天然氣橋接與核能政策討論——以因應能源安全挑戰。TSMC 等科技大廠加速自建再生能源採購，亦間接分擔國家能源轉型壓力。</p>
+  </div>
+</section>
+
+<!-- ⑤ 海底電纜 -->
+<section class="section cable" id="cable">
+  <div class="section-header">
+    <span class="tag">Submarine Cables</span>
+    <h2>海底電纜（Submarine Cables）</h2>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-tw">🇹🇼 台灣 / 國內</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>台馬四號電纜預計 6 月完工，修復馬祖數位命脈</h3>
+        <p>連接台灣本島與馬祖的台馬四號（Taima 4）海底電纜預計於 2026 年 6 月完工，以取代頻繁受損的舊線路。今年 4 月台馬三號在東引、北竿間發生芯線斷裂，造成東引約 1,500 名居民完全斷網，再度凸顯離島通訊脆弱性問題。台馬四號完工後將大幅提升馬祖地區的網路備援能力。</p>
+        <div class="src">來源：<a href="https://moda.gov.tw/major-policies/subseacable/1747" target="_blank">數位發展部 moda</a></div>
+      </div>
+      <div class="news-card">
+        <h3>台灣 2026 年已發生 6 起海纜斷障事件，海纜安全列入國家關鍵基礎設施</h3>
+        <p>台灣在 2025 年發生 17 起國際海纜斷障事件後，2026 年截至 3 月已累計 6 起。政府已於 2026 年 1 月將海底電纜正式納入「國家關鍵基礎設施（CI）」管理體系，立法院也在 2025 年 12 月通過「海纜七法」修正案，明定蓄意破壞海纜最高可判 7 年有期徒刑。</p>
+        <div class="src">來源：<a href="https://www.cw.com.tw/article/5136369" target="_blank">天下雜誌</a>｜<a href="https://moda.gov.tw/major-policies/subseacable/fault/1749" target="_blank">數位發展部</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-intl">🌍 國際</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>AUKUS 三國達成協議開發無人水下載具，共同保護印太海底電纜</h3>
+        <p>美國、澳洲與英國在 5 月 31 日宣布，三國將在 AUKUS 防衛協議框架下聯合開發無人水下載具（UUV），用於監控與保護印太地區的海底電纜設施。全球約 570 條海纜承載 99% 的跨洲際數據，過去 18 個月海纜遭受攻擊事件已達前所未有的規模，凸顯保護行動的迫切性。</p>
+        <div class="src">來源：<a href="https://www.cnn.com/2026/05/31/world/aukus-seabed-cables-defense-intl" target="_blank">CNN</a></div>
+      </div>
+      <div class="news-card">
+        <h3>美國《戰略海底電纜法》2026 提出，FCC 擬禁止中國設備接入美國海纜</h3>
+        <p>美國眾議院以跨黨派方式於 2026 年 2 月提出《戰略海底電纜法》，強化聯邦對海纜基礎設施的保護機制。此外，FCC 計劃採納規則，禁止涉及中國技術或設備的海底電纜接入美國，反映美國在數位基礎設施安全上的強硬立場。</p>
+        <div class="src">來源：<a href="https://www.submarinenetworks.com/en/nv/insights/us-introduces-strategic-subsea-cables-act-of-2026" target="_blank">Submarine Networks</a></div>
+      </div>
+      <div class="news-card">
+        <h3>SEA-ME-WE 6 與 Africa-1 等重大海纜系統 2026 年陸續投入服務</h3>
+        <p>多條全球重要海底電纜系統預計 2026 年進入商業運營：SEA-ME-WE 6（新加坡至馬賽，19,200 公里、126 Tbps）及 Africa-1（連接法國、中東至肯亞）均預計今年完工。Meta 的 2Africa Pearls 中東延伸段亦預計 2026 年完成，進一步強化全球數位互聯基礎。</p>
+        <div class="src">來源：<a href="https://www.capacityeurope.com/news-capacity-europe/european-submarine-cables" target="_blank">Capacity Europe</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>全球海底電纜基礎設施安全已從技術議題升格為地緣政治博弈的核心場域。AUKUS 海纜保護協議、美國立法行動與 FCC 中國設備禁令，顯示西方國家正以系統性政策佈局捍衛數位基礎設施主導權。</p>
+    <p>台灣作為全球海纜交匯樞紐，其海纜安全與韌性直接關係到國際數位連通性。海纜七法通過與 CI 升格，標誌台灣在制度面已啟動更積極的保護框架；惟實體防護能力的強化仍需持續投資與國際合作。</p>
+  </div>
+</section>
+
+<!-- ⑥ 土地資源 -->
+<section class="section land" id="land">
+  <div class="section-header">
+    <span class="tag">Land Resources</span>
+    <h2>土地資源（科學園區土地徵收）</h2>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-tw">🇹🇼 台灣 / 國內</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>中科二期土地點交預計 6 月底完成，台積電 1.4nm 廠 Q3 可望動工</h3>
+        <p>中部科學園區管理局宣布，中科二期園區擴建案用地取得作業已完成，預計 6 月底前正式點交土地，第 3 季即可同步啟動公共工程與台積電建廠作業。台積電在中科的 1.4 奈米先進製程新廠已於 2025 年啟動基樁工程，預計 2027 年底前完成風險性試產、2028 年下半年量產。</p>
+        <div class="src">來源：<a href="https://www.ctsp.gov.tw/english/00home/home.aspx?v=20" target="_blank">中部科學園區</a></div>
+      </div>
+      <div class="news-card">
+        <h3>南科三期已發布區段徵收計畫，積極爭取台積電 2nm/1.4nm 下世代廠</h3>
+        <p>南部科學園區三期擴建計畫已完成區段徵收計畫發布，期望吸引台積電 2 奈米及更先進的 1.4 奈米製程廠落腳。南科 2026 年 1–4 月累計營收已逼近新台幣 1.1 兆元，年增 21.3%，成為台灣首個營收可望突破 3 兆元的科學園區。</p>
+        <div class="src">來源：<a href="https://www.digitimes.com/news/a20260603PD234/southern-taiwan-science-park-revenue-2026-semiconductor-industry-taiwan.html" target="_blank">Digitimes</a>｜<a href="https://www.epochtimes.com/b5/26/1/31/n14688238.htm" target="_blank">大紀元</a></div>
+      </div>
+      <div class="news-card">
+        <h3>台灣政府廣設科學園區，美中科技戰推升半導體供應鏈在地化需求</h3>
+        <p>台灣國科會與各地方政府在美中科技戰持續延燒背景下積極推動科學園區擴建，透過用地取得、基礎設施投資與產業誘因措施吸引半導體廠商在地布局，以降低供應鏈集中風險並強化台灣在全球晶片版圖中的戰略地位。</p>
+        <div class="src">來源：<a href="https://www.digitimes.com/news/a20260506PD209/taiwan-science-park-semiconductor-industry-development-government.html" target="_blank">Digitimes</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-intl">🌍 國際</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>新加坡科學園區首宗住宅開發案 Lyndenwoods 落成，科技用地活化新模式</h3>
+        <p>新加坡科學園區（Singapore Science Park）首宗住宅開發項目 Lyndenwoods 由 CapitaLand 推出，面積約 7,000 平方公尺，原址為國防科技局設施，是科學園區主開發商將工業用地轉換為住宅的創新嘗試，為科技園區土地混合使用提供新參考案例。</p>
+        <div class="src">來源：<a href="https://www.the-lyndenwoods.com.sg/" target="_blank">Lyndenwoods</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>台灣科學園區土地供給已逼近滿載，國科會正同步推進多處擴建計畫以因應台積電及供應鏈廠商的用地需求。中科二期點交與南科三期徵收完成，顯示政府在土地取得效率上有所提升，但土地徵收的社會溝通與居民補償議題仍是推案的潛在風險。</p>
+    <p>長遠來看，隨著 2nm 以下製程廠房土地需求持續擴張，台灣土地資源的有限性將成為半導體產業進一步集中化的結構性制約，政策規劃需更前瞻地整合產業、環境與社會成本。</p>
+  </div>
+</section>
+
+<!-- ⑦ 公共建設 -->
+<section class="section infra" id="infra">
+  <div class="section-header">
+    <span class="tag">Infrastructure</span>
+    <h2>公共建設（科學園區相關）</h2>
+  </div>
+
+  <div class="zone">
+    <div class="zone-label zone-tw">🇹🇼 台灣 / 國內</div>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>中科 TSMC AP5B 先進封裝廠預計 2026 年完工，帶動周邊配套基礎建設需求</h3>
+        <p>台積電在中部科學園區推進的先進封裝產能擴充計畫（AP5B）預計 2026 年完工，為台中地區帶來大規模基礎建設需求，包括工業用水管網、電力變電站容量升級與交通運輸配套工程。中科已成 2025–2026 年台灣半導體史上最大投資聚集地之一。</p>
+        <div class="src">來源：<a href="https://news.tvbs.com.tw/english/3185162" target="_blank">TVBS</a></div>
+      </div>
+      <div class="news-card">
+        <h3>桃園龍潭科學園區擴建計畫進入國科會審查，預計 7 月送行政院核定</h3>
+        <p>國家科學及技術委員會正式受理桃園龍潭科學園區擴建計畫的審查作業，管理局計劃在修訂後將計畫案送交行政院核定，目標於 7 月完成。龍潭園區擴建將為北台灣半導體供應鏈提供更多廠區選擇，並帶動區域交通與公共設施建設。</p>
+        <div class="src">來源：<a href="https://www.taiwannews.com.tw/news/6356637" target="_blank">Taiwan News</a></div>
+      </div>
+      <div class="news-card">
+        <h3>南科打造智慧城市應用，AI 與半導體產業實力驅動公共建設創新</h3>
+        <p>南部科學園區 2026 年積極推動智慧城市建設，整合半導體與 AI 產業優勢，協助交通、醫療、環境監測等公共領域發展創新應用系統。南科定位不僅是生產基地，更致力打造完善生活機能的「幸福科學城」，將公共設施建設與產業發展並行推進。</p>
+        <div class="src">來源：<a href="https://www.stsp.gov.tw/" target="_blank">南部科學園區</a></div>
+      </div>
+      <div class="news-card">
+        <h3>沙崙科學城計畫通過環評初審，台南科技走廊再添新節點</h3>
+        <p>國科會提出在台南沙崙地區建設新科學園區的計畫已通過環境影響評估第一階段審查。沙崙科學城將與南科形成台南科技走廊，強化台灣南部半導體聚落的完整性，並為整體區域帶動道路、用水、電力等公共工程需求。</p>
+        <div class="src">來源：<a href="https://www.taipeitimes.com/News/taiwan/archives/2026/05/29/2003858183" target="_blank">Taipei Times</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>台灣科學園區的公共建設需求正進入前所未有的擴張期。中科、南科、龍潭等多地同步啟動或審查擴建計畫，顯示政府試圖以區域分散化策略降低半導體供應鏈集中風險，同時帶動地方就業與基礎建設投資。</p>
+    <p>然而多案並進也意味公共建設預算、工程發包與技術人才的競爭加劇。政府需強化跨部門協調機制，確保電力、用水、道路等基礎設施建設能與廠房建設同步到位，避免成為產能爬升的瓶頸。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>台灣三大科學園區（竹科、中科、南科）2025 年合計營收創歷史新高，2026 年在 AI 需求帶動下持續高速成長。南科 2026 年 1–4 月營收已達近 1.1 兆元，有望成為台灣首個突破 3 兆元年營收的科學園區。第三高雄科學園區（楠梓）計畫亦預估年產值達 9,600 億元並創造 6,600 個就業機會，台灣科學園區的整體版圖正進入新一輪擴張週期。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>本報告由 AI 自動彙整於 2026 年 6 月 5 日｜資料涵蓋：國際與台灣，7 大主題｜Research Hub · Ann</p>
+</footer>
+
+</body>
+</html>
