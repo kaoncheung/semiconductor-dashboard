@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>研究報告 — 2026年7月12日</title>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --accent: #2b6cb0;
+      --accent-light: #ebf4ff;
+      --border: #cbd5e0;
+      --text: #2d3748;
+      --muted: #718096;
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --semi:  #553c9a; --semi-l: #faf5ff;
+      --water: #2b6cb0; --water-l: #ebf8ff;
+      --power: #c05621; --power-l: #fffaf0;
+      --energy:#276749; --energy-l:#f0fff4;
+      --cable: #2c7a7b; --cable-l: #e6fffa;
+      --land:  #744210; --land-l: #fffbeb;
+      --infra: #702459; --infra-l: #fff5f7;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px}
+
+    header{background:var(--primary);color:#fff;padding:2rem 2.5rem 1.5rem}
+    header .meta{font-size:.75rem;opacity:.65;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem}
+    header h1{font-size:1.65rem;font-weight:700}
+    header p.sub{margin-top:.3rem;font-size:.88rem;opacity:.8}
+
+    nav{background:var(--accent);padding:0 1.5rem;display:flex;flex-wrap:wrap;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+    nav a{color:rgba(255,255,255,.85);text-decoration:none;padding:.65rem .75rem;font-size:.78rem;font-weight:500;border-bottom:3px solid transparent;white-space:nowrap;transition:all .15s}
+    nav a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.6)}
+
+    main{max-width:1060px;margin:2rem auto;padding:0 1.5rem 5rem}
+
+    .section{margin-bottom:3.5rem}
+    .section-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--border)}
+    .tag{display:inline-block;padding:.25rem .7rem;border-radius:4px;font-size:.7rem;font-weight:700;letter-spacing:.05em;color:#fff;text-transform:uppercase}
+    .section-header h2{font-size:1.2rem;font-weight:700;color:var(--primary)}
+
+    .zone-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .75rem;border-radius:4px;display:inline-block;margin-bottom:.75rem}
+    .zone-tw{background:#fff3cd;color:#856404;border:1px solid #ffc107}
+    .zone-intl{background:#cfe2ff;color:#084298;border:1px solid #9ec5fe}
+
+    .zone{margin-bottom:1.5rem}
+    .news-grid{display:grid;gap:.85rem}
+    .news-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:6px;padding:1rem 1.1rem}
+    .news-card h3{font-size:.93rem;font-weight:600;margin-bottom:.35rem;color:var(--primary)}
+    .news-card p{font-size:.87rem;color:var(--text)}
+    .news-card .src{margin-top:.5rem;font-size:.76rem;color:var(--muted)}
+    .news-card .src a{color:var(--accent);text-decoration:none}
+    .news-card .src a:hover{text-decoration:underline}
+
+    .box{border-radius:6px;padding:1rem 1.25rem;margin-bottom:1rem}
+    .box h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem}
+    .box p{font-size:.88rem}
+    .box p+p{margin-top:.55rem}
+    .analysis{background:var(--accent-light);border:1px solid #bee3f8}
+    .analysis h4{color:var(--accent)}
+    .tw-box{background:#fffaf0;border:1px solid #f6ad55;border-left:4px solid #ed8936}
+    .tw-box h4{color:#c05621}
+
+    .semi  .news-card{border-left-color:var(--semi)}  .semi  .tag{background:var(--semi)}
+    .water .news-card{border-left-color:var(--water)} .water .tag{background:var(--water)}
+    .power .news-card{border-left-color:var(--power)} .power .tag{background:var(--power)}
+    .energy .news-card{border-left-color:var(--energy)}.energy .tag{background:var(--energy)}
+    .cable .news-card{border-left-color:var(--cable)} .cable .tag{background:var(--cable)}
+    .land  .news-card{border-left-color:var(--land)}  .land  .tag{background:var(--land)}
+    .infra .news-card{border-left-color:var(--infra)} .infra .tag{background:var(--infra)}
+
+    footer{text-align:center;font-size:.76rem;color:var(--muted);padding:2rem;border-top:1px solid var(--border);margin-top:3rem}
+    @media(max-width:600px){header{padding:1.5rem 1rem}main{padding:0 1rem 3rem}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="meta">每日研究報告 · Daily Research Briefing</div>
+  <h1>科技、資源與政策動態報告</h1>
+  <p class="sub">2026 年 7 月 12 日（星期日）｜涵蓋：國內＋國際，7 大主題</p>
+</header>
+
+<nav>
+  <a href="#semi">💠 半導體</a>
+  <a href="#water">💧 水資源</a>
+  <a href="#power">⚡ 電力</a>
+  <a href="#energy">🌿 能源政策</a>
+  <a href="#cable">🌐 海底電纜</a>
+  <a href="#land">🏗️ 土地資源</a>
+  <a href="#infra">🛣️ 公共建設</a>
+</nav>
+
+<main>
+
+<!-- ① 半導體 -->
+<section class="section semi" id="semi">
+  <div class="section-header">
+    <span class="tag">Semiconductors</span>
+    <h2>💠 半導體</h2>
+  </div>
+
+  <div class="zone">
+    <span class="zone-label zone-intl">🌐 國際動態</span>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <h3>全球半導體 5 月銷售額達 1,206 億美元，月增 9.2%、年增 104.1%</h3>
+        <p>SIA 最新數據顯示，2026 年 5 月全球半導體銷售額達 US$120.6 billion，較 4 月成長 9.2%，較去年同期暴增 104.1%，AI 需求持續推升整體產業基本面。</p>
+        <div class="src">來源：<a href="https://www.semiconductors.org/news-events/latest-news/" target="_blank">SIA — Semiconductor Industry Association</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>半導體股拋售潮延續，Intel 單周跌逾 21%、市值蒸發逾 1 兆美元</h3>
+        <p>華爾街對 AI 資本支出（capex）能否轉化為合理報酬的疑慮升溫，半導體類股遭遇大幅回檔，Intel 股價單周下跌超過 21%，整體板塊市值蒸發逾 US$1 trillion，與銷售創高的基本面形成強烈對比。</p>
+        <div class="src">來源：<a href="https://www.forbes.com/sites/petercohan/2026/07/08/intel-stock-down-21-inside-the-july-2026-semiconductor-selloff/" target="_blank">Forbes — July 2026 Semiconductor Selloff</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>Samsung、SK Hynix 宣布十年逾 1 兆美元韓國投資；SK Hynix 美國掛牌募資 265 億美元</h3>
+        <p>兩大韓國記憶體廠計畫未來十年合計投資超過 US$1 trillion，打造半導體聚落與 AI 資料中心。SK Hynix 同時完成美國史上最大外國企業掛牌，募得 US$26.5 billion，並斥資 US$8.6 billion 向 ASML 採購 EUV 曝光設備。</p>
+        <div class="src">來源：<a href="https://www.distillintelligence.com/briefings/semiconductors-ai-chips-2026-07-10" target="_blank">Distill Intelligence — Weekly Briefing (July 10, 2026)</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>Micron 上調美國投資目標至 2,500 億美元，紐約新廠動土</h3>
+        <p>Micron 將 2035 年前的美國投資目標提高至 US$250 billion，紐約州大型晶圓廠正式動工，並與 Ford、Meta 簽訂長期供應協議，加速記憶體在地化布局。</p>
+        <div class="src">來源：<a href="https://www.distillintelligence.com/briefings/semiconductors-ai-chips-2026-07-03" target="_blank">Distill Intelligence — Weekly Briefing (July 3, 2026)</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>美國高技術勞工短缺恐延誤數十億美元晶圓廠建設</h3>
+        <p>Bloomberg 報導，美國半導體建廠潮面臨全國性技術勞工短缺，預估至 2030 年缺口將達 157,000 名全職人力，恐拖累 CHIPS 法案帶動的產能回流時程。另有集體訴訟指控 Samsung、Micron、SK Hynix 合謀哄抬記憶體價格最高達 700%。</p>
+        <div class="src">來源：<a href="https://www.bloomberg.com/news/articles/2026-07-07/semiconductor-worker-shortfall-endangers-us-chip-factory-revival" target="_blank">Bloomberg — US Semiconductor Labor Shortage</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>本周半導體呈現「基本面創高、股價重挫」的罕見背離：5 月全球銷售年增 104%，但市場開始質疑 AI 基礎建設的投資報酬時程，資金從高估值晶片股撤出。若 AI capex 修正成真，首當其衝的是記憶體與先進製程設備訂單；但目前 Samsung、SK Hynix、Micron 的巨額擴產承諾顯示供給端仍押注長期需求。</p>
+    <p>政策面上，美國勞工短缺與記憶體反壟斷訴訟為兩大變數：前者可能使美國新廠量產時程遞延、變相延長台灣先進產能的稀缺價值；後者若成立，將牽動全球記憶體定價機制與 DRAM/HBM 合約談判。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>台灣上半年商用不動產交易額達 NT$1,266 億、年增 92% 創新高，主因 AI 供應鏈「搶廠房」熱潮，其中 Micron 與 ASE（日月光）在科學園區內的大型購置案約占整體交易量近半。TSMC 亦已向主管機關申請於竹科擴建區設置先進製程晶圓廠。</p>
+    <div class="src" style="margin-top:.5rem;font-size:.76rem">來源：<a href="https://finance.biggo.com/news/f70c01ce-33ea-4dbc-b539-1ede5e223ada" target="_blank">BigGo Finance — 台灣商用不動產上半年交易暴增 92%</a>｜<a href="https://www.taipeitimes.com/News/biz/archives/2026/05/04/2003856743" target="_blank">Taipei Times — TSMC seeking approval for advanced fab</a></div>
+  </div>
+</section>
+
+<!-- ② 水資源 -->
+<section class="section water" id="water">
+  <div class="section-header">
+    <span class="tag">Water Resources</span>
+    <h2>💧 水資源</h2>
+  </div>
+
+  <div class="zone">
+    <span class="zone-label zone-intl">🌐 國際動態</span>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <h3>美國眾議院公布 WRDA 2026 水資源開發法案</h3>
+        <p>眾議院交通與基礎建設委員會提出跨黨派 Water Resources Development Act of 2026，本次授權的新建工程較往年減少，重心轉向規劃與政策調整，並指示陸軍工兵署（Army Corps）持續評估濕地復育、建物墊高與遷離洪泛區等自然解方（nature-based solutions）。</p>
+        <div class="src">來源：<a href="https://natlawreview.com/article/water-issues-horizon-second-half-2026" target="_blank">National Law Review — Water Issues in H2 2026</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>白宮 FY2027 預算擬砍聯邦水利基礎建設經費約四分之一</h3>
+        <p>白宫公布的 2027 財年預算構想將主要聯邦水利基礎建設計畫削減約 25%，小型供水系統取得融資的難度恐進一步升高。</p>
+        <div class="src">來源：<a href="https://www.circleofblue.org/newsletter/federal-water-tap-july-6-2026-supreme-court-takes-up-another-interstate-river-dispute/" target="_blank">Circle of Blue — Federal Water Tap (July 6, 2026)</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>Colorado River 後 2026 營運陷入僵局，最終環評 7 月底出爐</h3>
+        <p>參議院能源委員會就 Colorado River Basin 的 post-2026 營運舉行監督聽證，州際談判破裂與水權爭議使流域瀕臨訴訟；內政部表示將於 7 月底前公布大型水庫營運的最終環境影響報告（Final EIS）。</p>
+        <div class="src">來源：<a href="https://www.circleofblue.org/newsletter/federal-water-tap-july-6-2026-supreme-court-takes-up-another-interstate-river-dispute/" target="_blank">Circle of Blue — Federal Water Tap</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>華盛頓州預測：Columbia Basin 供水風險 2040 年代中期浮現</h3>
+        <p>華盛頓州生態署與州立水研究中心的最新預測指出，氣候、農業行為、地下水使用與人口成長等趨勢，將在 2040 年代中期造成區域供水脆弱性。加州 State Water Project 亦自 7 月 1 日起轉入夏季操作模式，加速調度水源。</p>
+        <div class="src">來源：<a href="https://ecology.wa.gov/about-us/who-we-are/news/2026/july-1-new-forecast-shows-anticipated-risks-to-columbia-basin-water-supplies" target="_blank">WA Dept. of Ecology</a>｜<a href="https://water.ca.gov/News/Blog/2026/Jul-2026/State-Water-Project-Balances-Water-Supply-and-Environment-as-Operations-Shift-with-the-Season" target="_blank">California DWR</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>Amazon 資料中心「water positive」目標達成度已達 75%</h3>
+        <p>Amazon 公布水資源永續里程碑，2025 年已達成 2030 年「返還多於使用」（water positive）目標的 75%，反映雲端業者在資料中心用水議題上的壓力與布局。</p>
+        <div class="src">來源：<a href="https://industria-partners.com/water-investors-monthly/water-investors-monthly-july-2026/" target="_blank">Industria Partners — Water Investor's Monthly (July 2026)</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>美國水資源政策正處於「需求上升、預算收縮」的矛盾期：WRDA 2026 轉向低成本的自然解方與規劃導向，而 FY2027 預算又擬削減水利經費，意味未來水利投資將更依賴州政府與民間資本。Colorado River 若走向訴訟，將成為美西水權制度數十年來最大變局，牽動農業、都市供水與半導體廠（如亞利桑那）的長期用水確定性。</p>
+    <p>科技業「water positive」承諾（Amazon、Microsoft 等）正在形成新的產業標準，水回收、純水處理與智慧水表等水科技供應鏈可望受惠。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>賴清德總統於半導體供應鏈專區動土典禮重申，政府將全力滿足產業對水、電、土地與人才的需求；全國跨區域供水韌性計畫「珍珠串計畫」（Pearl Chain Plan）已接近完工。另有台灣水處理業者更名轉型，搶攻晶片級超純水（ultrapure water）處理商機。</p>
+    <div class="src" style="margin-top:.5rem;font-size:.76rem">來源：<a href="https://www.taipeitimes.com/News/taiwan/archives/2026/06/13/2003859023" target="_blank">Taipei Times — Industry's need for water, electricity will be met: Lai</a>｜<a href="https://www.digitimes.com/news/a20260626PD214/water-industrial-manufacturing-technology-renewable-energy.html" target="_blank">DIGITIMES — 台灣水處理業者轉攻晶片級純化</a></div>
+  </div>
+</section>
+
+<!-- ③ 電力 -->
+<section class="section power" id="power">
+  <div class="section-header">
+    <span class="tag">Power &amp; Electricity</span>
+    <h2>⚡ 電力</h2>
+  </div>
+
+  <div class="zone">
+    <span class="zone-label zone-intl">🌐 國際動態</span>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <h3>熱浪襲擊 30 州 1.6 億人，美國最大電網 PJM 進入緊急狀態</h3>
+        <p>美國能源部（DOE）因熱浪宣布電網緊急狀態，最大電網營運商 PJM 同時面臨機組跳脫、輸電線過載與空調用電暴增三重壓力，已啟動緊急措施要求需量反應用戶減載以避免輪流停電。</p>
+        <div class="src">來源：<a href="https://www.cnbc.com/2026/07/03/power-grid-independence-day-weekend.html" target="_blank">CNBC — PJM escalates emergency actions</a>｜<a href="https://abcnews.com/US/stretched-limit-heat-wave-prompts-us-electrical-grid/story?id=134369230" target="_blank">ABC News</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>PJM 需求預估 166,147 MW，將改寫 2006 年以來歷史紀錄</h3>
+        <p>PJM 預估 7 月 2 日尖峰負載達 166,147 MW，超越 2006 年創下的 165,563 MW 歷史紀錄；芝加哥、紐約、費城、華府等地體感溫度飆破 100～113°F。</p>
+        <div class="src">來源：<a href="https://www.electricchoice.com/blog/pjm-emergency-order-heat-wave-2026/" target="_blank">Electric Choice — PJM Emergency Order</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>DOE 緊急命令授權「限縮資料中心用電」並暫時豁免電廠排放限制</h3>
+        <p>美國能源部發布兩道緊急命令，授權 PJM 於必要時削減資料中心（data center）用電並暫時豁免電廠污染排放上限，是資料中心首度被明確納入電網緊急調度對象，具指標意義。</p>
+        <div class="src">來源：<a href="https://www.cnbc.com/2026/07/03/extreme-heat-us-power-grids-july-4-travel.html" target="_blank">CNBC — Extreme heat threatens U.S. power grids</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>北維州現貨電價飆破每 MWh 2,000 美元，為平時 50 倍</h3>
+        <p>資料中心重鎮北維吉尼亞的批發現貨電價本周突破 US$2,000/MWh，遠高於平時約 US$40/MWh 的水準，凸顯 AI 資料中心聚落對區域電網的壓力。</p>
+        <div class="src">來源：<a href="https://www.cnbc.com/2026/07/03/power-grid-independence-day-weekend.html" target="_blank">CNBC — Power grid Independence Day weekend</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>PJM 事件標誌著「AI 用電 vs 民生用電」的矛盾正式浮上檯面：監管機關首次在緊急狀態下把資料中心列為可削減負載，未來資料中心恐須自備電源（behind-the-meter）、儲能或簽訂可中斷契約，將墊高 AI 基礎建設營運成本，並加速 SMR、燃氣與大型儲能的投資。</p>
+    <p>電價暴衝也將反映到零售端，強化美國國會對 Ratepayer Protection Act 等「用電成本分攤」立法的推力（見能源政策一節）。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>台電即時資訊顯示近期備轉容量率穩定維持約 20%，短期供電無虞；但半導體用電預估將自 2026 年約 520 億度增至 2030 年 800 億度、2035 年上看 1,100 億度，電力成為台灣半導體下一個瓶頸。TSMC 表示 N2 至 A14 世代晶片能效目標提升最高 30%，以因應 AI 能源危機。</p>
+    <div class="src" style="margin-top:.5rem;font-size:.76rem">來源：<a href="https://tspasemiconductor.substack.com/p/taiwans-next-semiconductor-bottleneck" target="_blank">TSPA — Taiwan's Next Semiconductor Bottleneck Is Power</a>｜<a href="https://www.benzinga.com/markets/tech/26/05/52866391/taiwan-semiconductor-targets-30-power-savings-to-fight-the-ai-energy-crisis-report" target="_blank">Benzinga — TSMC targets 30% power savings</a></div>
+  </div>
+</section>
+
+<!-- ④ 能源政策 -->
+<section class="section energy" id="energy">
+  <div class="section-header">
+    <span class="tag">Energy Policy</span>
+    <h2>🌿 能源政策</h2>
+  </div>
+
+  <div class="zone">
+    <span class="zone-label zone-intl">🌐 國際動態</span>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <h3>DOE 提供 175 億美元有條件貸款，加速商用核電長週期零組件採購</h3>
+        <p>美國能源部 Office of Energy Dominance Financing 發出 US$17.5 billion 有條件貸款承諾，用於採購商用核反應爐的長週期（long-lead-time）零組件，展現聯邦以融資工具加速核電復興的決心。</p>
+        <div class="src">來源：<a href="https://www.mondaq.com/unitedstates/utilities/1812614/washington-update-sustainable-energy-infrastructure-july-2026" target="_blank">Mondaq — Washington Update (July 2026)</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>美國陸軍釋出四處軍事基地土地，供關鍵礦物加工設施進駐</h3>
+        <p>美國陸軍宣布將四處軍事設施的「低度利用」土地出租給民間企業，建立石墨、鋰、硼與重稀土的本土加工產能，進駐者包括 Titan Mining、EnergyX、Ioneer 與 REalloys，地點涵蓋阿拉巴馬、阿肯色、德州與猶他州。</p>
+        <div class="src">來源：<a href="https://www.mondaq.com/unitedstates/utilities/1812614/washington-update-sustainable-energy-infrastructure-july-2026" target="_blank">Mondaq — Washington Update (July 2026)</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>Ratepayer Protection Act 快速闖關，Microsoft 與資料中心業者力挺</h3>
+        <p>規範資料中心用電成本分攤的 Ratepayer Protection Act 於提出一周內即通過眾議院能源小組委員會審查，並獲 Microsoft 與 Data Center Coalition（成員含 Google、Meta）等業界支持，環評要求與電網成本分攤仍是攻防焦點。</p>
+        <div class="src">來源：<a href="https://www.mondaq.com/unitedstates/utilities/1812614/washington-update-sustainable-energy-infrastructure-july-2026" target="_blank">Mondaq — Washington Update (July 2026)</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>美國史上首見：太陽能發電占比 12.8% 超越燃煤 12.2%</h3>
+        <p>清潔能源智庫 Ember 報告指出，太陽能供電占比達 12.8%，首度超越燃煤的 12.2%。另有 CNN 分析指出，現任政府的能源政策使電價不降反升，能源成本成為政治議題。</p>
+        <div class="src">來源：<a href="https://www.cnn.com/2026/07/07/climate/trump-electricity-bills-renewables-energy-costs" target="_blank">CNN — Electricity bills analysis</a>｜<a href="https://www.deloitte.com/us/en/insights/industry/renewable-energy/renewable-energy-industry-outlook.html" target="_blank">Deloitte — 2026 Renewable Energy Outlook</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>美國能源政策三大主軸——供應鏈自主（關鍵礦物）、可靠電源擴張（核電融資）、電網升級（成本分攤立法）——全數指向同一驅動力：AI 帶來的電力需求成長。核電供應鏈（鑄鍛件、燃料、EPC）與關鍵礦物加工是明確的政策受惠板塊；太陽能超車燃煤則顯示再生能源即使在政策逆風下仍靠經濟性持續擴張。</p>
+    <p>對台灣而言，美國「電力優先」政策論述與資料中心成本分攤機制，可作為台灣面對 AI 資料中心投資潮時的制度參考。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>賴政府對半導體業承諾「水、電、土地、人才」四大要素全面到位，能源政策焦點在於支撐 2030 年後倍增的半導體用電需求；台電備轉容量率目前約 20%，惟長期電源開發與電網投資仍是關鍵課題。</p>
+    <div class="src" style="margin-top:.5rem;font-size:.76rem">來源：<a href="https://www.taipeitimes.com/News/taiwan/archives/2026/06/13/2003859023" target="_blank">Taipei Times — Lai: Industry's need will be met</a></div>
+  </div>
+</section>
+
+<!-- ⑤ 海底電纜 -->
+<section class="section cable" id="cable">
+  <div class="section-header">
+    <span class="tag">Submarine Cables</span>
+    <h2>🌐 海底電纜</h2>
+  </div>
+
+  <div class="zone">
+    <span class="zone-label zone-intl">🌐 國際動態</span>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <h3>FCC 通過第二階段海纜新規，「可信任業者」享快速審查通道</h3>
+        <p>美國 FCC 通過海底電纜規則的第二份 Report and Order，聚焦海纜終端設備（submarine line terminal equipment）監管；承諾符合最高國安標準並接受美方持續監督的業者可走「fast-track」快速核准程序，Google、Meta、SubCom 等被視為主要受惠者，全球海纜連結恐因此走向陣營化。</p>
+        <div class="src">來源：<a href="https://subtelforum.com/fcc-rules-split-global-submarine-cable-connectivity/" target="_blank">SubTel Forum — FCC Rules Split Global Connectivity</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>NEC 簽約承建 3,600 公里 I-2SEA 海纜，2029 年啟用</h3>
+        <p>連接印度與東南亞的 I-2SEA（India-Southeast Asia）海纜系統於 7 月 2 日正式簽署建造合約，全長 3,600 公里，預計 2029 年投入營運，以滿足生成式 AI 與雲端服務在區域內爆發的頻寬需求。</p>
+        <div class="src">來源：<a href="https://www.nec.com/en/press/202607/global_20260703_02.html" target="_blank">NEC — I-2SEA Supply Contract</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>Cerberus 為 SubCom 完成 23 億美元續投資，押注 AI 海纜潮</h3>
+        <p>Cerberus Capital Management 與 CVC Secondary Partners 完成 US$2.3 billion 的 SubCom 單一資產續投工具（continuation vehicle），延續控股並備戰 AI 與雲端建設帶來的海底連結需求激增。</p>
+        <div class="src">來源：<a href="https://www.submarine-cables-summit.com/news/subcom-lands-23b-to-cable-the-ai-era" target="_blank">Submarine Cables Summit — SubCom $2.3B</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>紅海地緣風險升溫，海纜修復動輒逾 50 天</h3>
+        <p>紅海等熱點的地緣政治緊張持續威脅關鍵海底數據電纜，一旦受損恐擾亂全球金融與雲端服務，修復時間經常超過 50 天。Submarine Cables Summit 2026 已於 7 月 6～7 日在邁阿密舉行。</p>
+        <div class="src">來源：<a href="https://www.whalesbook.com/news/English/telecom/Submarine-Cable-Vulnerability-Risks-Global-Connectivity/6a4e77ebe2027284097087a1" target="_blank">Whalesbook — Submarine Cable Vulnerability</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>FCC 新規實質上把海纜生態系劃分為「可信任」與「其他」兩個陣營，中資設備與登陸站將加速被排除於美系海纜之外；對台灣而言，這強化了台灣作為美系海纜「可信任節點」的戰略價值，但也意味新建海纜的設備選商與資安合規成本上升。</p>
+    <p>資本市場方面，SubCom 續投資與 I-2SEA 開工顯示 AI 頻寬需求已具體轉化為海纜訂單，施工船隊與海纜製造產能未來數年將供不應求。</p>
+  </div>
+
+  <div class="box tw-box">
+    <h4>🇹🇼 台灣相關動態</h4>
+    <p>台灣目前以 10 條國內、14 條國際共 24 條海纜對外連結；2025 年發生 17 件斷纜事件，2026 年第一季亦有 6 次斷裂，3 月底中國籍工程駁船「海宏工66號」涉嫌破壞台馬三號海纜。制度面上，「海纜七法」已三讀（故意破壞最高處 7 年徒刑、沒收犯案船隻），2026 年 1 月起海纜正式納入國家關鍵基礎設施（CI）管理；強化台馬通訊的台馬 4 號海纜預計 2026 年 6 月完工。</p>
+    <div class="src" style="margin-top:.5rem;font-size:.76rem">來源：<a href="https://www.cw.com.tw/article/5136369" target="_blank">天下雜誌 — 海底電纜 2026 斷裂次數與影響</a>｜<a href="https://moda.gov.tw/major-policies/subseacable/1747" target="_blank">數位發展部 — 最新海纜狀況</a>｜<a href="https://tfc-taiwan.org.tw/submarine-cable-risks-taiwan-prevent-internet-isolation/" target="_blank">台灣事實查核中心</a></div>
+  </div>
+</section>
+
+<!-- ⑥ 土地資源 -->
+<section class="section land" id="land">
+  <div class="section-header">
+    <span class="tag">Land Resources</span>
+    <h2>🏗️ 土地資源（科學園區土地徵收）</h2>
+  </div>
+
+  <div class="zone">
+    <span class="zone-label zone-tw">🇹🇼 台灣動態</span>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <h3>南科周邊七大開發區推進，431 公頃開發案進入區段徵收</h3>
+        <p>台南市政府推動南科周邊 A～E、N、O 等七大開發區的都市計畫與區段徵收作業，總面積約 431 公頃，將提供產業、住宅、商業與公共設施等多元用地；LM 區已完成開發、FG 區已完成區段徵收，其餘各區作業進行中。</p>
+        <div class="src">來源：<a href="https://udn.com/news/story/7240/9619874" target="_blank">聯合新聞網 — 南科周邊七大開發區 431 公頃進入區段徵收</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>南科三期區段徵收預計 2026 年完工，爭取 TSMC 2nm／1.4nm 落腳</h3>
+        <p>南科三期已發布區段徵收計畫，預計 2026 年完工，將積極爭取台積電下一世代 2 奈米與 1.4 奈米廠在此布局；「台南科學園區特定區計畫（第四次通盤檢討）」亦已發布實施，新增 13.43 公頃資源循環事業專用區，年處理量約 30 萬公噸。</p>
+        <div class="src">來源：<a href="https://www.stsp.gov.tw/web/WEB/Jsp/Page/cindex.jsp?frontTarget=DEFAULT&thisRootID=732" target="_blank">南部科學園區 — 新設園區</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>沙崙生態科學園區 531 公頃加速推動，土地取得目標 2027</h3>
+        <p>南台灣沙崙生態科學園區（Shalun Eco Science Park）獲快速推動，規劃開發 531 公頃，產值潛力上看 NT$2.2 兆（US$68.4 billion），都市計畫、環評與土地取得目標於 2027 年前完成。</p>
+        <div class="src">來源：<a href="https://www.digitimes.com/news/a20260409PD227/expansion-capacity-taiwan-tsmc-science-park.html" target="_blank">DIGITIMES — Taiwan ramps up science park expansion</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>龍潭園區擴建案 7 月報行政院核定，後續啟動私有地取得</h3>
+        <p>竹科管理局表示，國科會（NSTC）審查桃園龍潭科學園區擴建計畫後，修正結果預計於 2026 年 7 月前報請行政院核定；因擴建區多為私有土地，核定後將進入土地取得程序，擴建區工程預計 2029 年第四季動工。</p>
+        <div class="src">來源：<a href="https://www.taiwannews.com.tw/news/6356637" target="_blank">Taiwan News — Taoyuan science park expansion plan to be reviewed</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>科學園區用地已成台灣半導體擴張的實質瓶頸：既有園區接近滿載，政府同步推進南科三期、沙崙、龍潭擴建與南科周邊 431 公頃區段徵收，形成「園區內產業用地＋周邊生活圈」的整體開發模式。龍潭案因私有地占比高，土地取得的抗爭與補償爭議風險值得持續追蹤——2024 年龍潭三期曾因民意反彈而縮編，是重要前例。</p>
+    <p>區段徵收帶動的周邊土地增值也推升房價與社會分配議題，開發時程（尤其 2026 年南科三期完工、7 月龍潭核定）是觀察指標。</p>
+  </div>
+</section>
+
+<!-- ⑦ 公共建設 -->
+<section class="section infra" id="infra">
+  <div class="section-header">
+    <span class="tag">Public Infrastructure</span>
+    <h2>🛣️ 公共建設 for 科學園區</h2>
+  </div>
+
+  <div class="zone">
+    <span class="zone-label zone-tw">🇹🇼 台灣動態</span>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <h3>屏東「半導體供應鏈專區」動土，七家台積電協力廠商申請進駐</h3>
+        <p>全台首座「半導體供應鏈專用園區」於屏東動土，強化半導體基礎設施韌性；已有七家台積電協力廠商申請設點，涵蓋廠務工程、化學品供應與水回收（water recycling）服務等領域。</p>
+        <div class="src">來源：<a href="https://www.digitimes.com/news/a20260506PD209/taiwan-science-park-semiconductor-industry-development-government.html" target="_blank">DIGITIMES — Taiwan expands science parks amid tech war</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>園區審議會通過逾 NT$506.3 億新投資案</h3>
+        <p>科學園區審議會核准超過 NT$50.63 billion（約 506.3 億元）的新投資，涵蓋半導體、新興科技與光電領域，園區公共設施與用水用電配套需求同步增加。</p>
+        <div class="src">來源：<a href="https://www.taiwannews.com.tw/news/6360085" target="_blank">Taiwan News — Taiwan approves NT$50.63 billion in science park investments</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>嘉義、屏東園區公共工程與廠商建廠同步推進</h3>
+        <p>嘉義科學園區（太保）與屏東科學園區自 2023 年 5 月公共工程動土後，採「公共工程與建廠同步」模式加速開發；進駐廠商除繳納土地租金外，須分攤公共設施建設費用。</p>
+        <div class="src">來源：<a href="https://www.stsp.gov.tw/web/WEB/Jsp/Page/cindex.jsp?frontTarget=DEFAULT&thisRootID=195" target="_blank">南部科學園區 — 設立沿革</a></div>
+      </div>
+
+      <div class="news-card">
+        <h3>科學園區邁向擴張新階段：土地、基建、產業聚落三軌並進</h3>
+        <p>Taipei Times 社論指出，在 TSMC 帶動的投資潮下，台灣科學園區正朝土地擴充、基礎建設升級與次世代產業聚落三方向轉型，園區政策從單點開發走向區域治理。</p>
+        <div class="src">來源：<a href="https://www.taipeitimes.com/News/editorials/archives/2026/06/17/2003859222" target="_blank">Taipei Times — EDITORIAL: Science parks look toward future</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box analysis">
+    <h4>📊 市場與政策影響分析</h4>
+    <p>屏東供應鏈專區代表園區公共建設思維的轉變：從「單一園區配套」轉向「供應鏈整體布局」，把廠務、化學品、水回收等支援產業就近納入專區，可縮短建廠周期並降低物流風險。對營造、廠務工程（如漢唐、帆宣體系）、水處理與電力配套業者是明確利多。</p>
+    <p>後續觀察重點：龍潭擴建 7 月行政院核定進度、南科三期 2026 年完工時程，以及各新園區的水電供應配套是否跟上建廠速度。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  報告產製日期：2026 年 7 月 12 日｜資料來源：公開新聞與官方網站，連結見各則新聞｜Daily Research Briefing for Ann
+</footer>
+
+</body>
+</html>
