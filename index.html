@@ -1,451 +1,175 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" id="html-root">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ann's Research Hub</title>
-  <style>
-    :root {
-      --bg: #0f1117;
-      --card: #1a1d27;
-      --card-hover: #21263a;
-      --border: #2a2f45;
-      --accent: #4f8ef7;
-      --accent2: #7c5cbf;
-      --text: #e2e8f0;
-      --muted: #7a8499;
-      --tag-new: #38a169;
-      --radius: 12px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", -apple-system, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3rem 1.5rem 5rem;
-    }
-
-    /* ── Header ── */
-    .hero {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .hero .greeting {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #4f8ef7 0%, #9b72f7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.4rem;
-    }
-    .hero .sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    #live-date {
-      font-size: 0.85rem;
-      color: var(--accent);
-      margin-top: 0.3rem;
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* ── Topics bar ── */
-    .topics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-bottom: 2.5rem;
-      max-width: 780px;
-    }
-    .topics span {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 99px;
-      padding: 0.3rem 0.9rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    /* ── Report list ── */
-    .report-list {
-      width: 100%;
-      max-width: 780px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .report-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: background 0.15s, border-color 0.15s, transform 0.1s;
-      position: relative;
-      overflow: hidden;
-    }
-    .report-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, var(--accent), var(--accent2));
-      border-radius: 3px 0 0 3px;
-    }
-    .report-card:hover {
-      background: var(--card-hover);
-      border-color: var(--accent);
-      transform: translateX(3px);
-    }
-
-    .report-date {
-      min-width: 110px;
-      text-align: center;
-    }
-    .report-date .day {
-      font-size: 1.6rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--accent);
-      font-variant-numeric: tabular-nums;
-    }
-    .report-date .month-year {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-    }
-
-    .report-info { flex: 1; }
-    .report-info .title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    .report-info .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-    .report-info .tags span {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 99px;
-      background: rgba(79,142,247,0.12);
-      color: #7db5ff;
-      border: 1px solid rgba(79,142,247,0.2);
-    }
-
-    .badge-new {
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 0.2rem 0.55rem;
-      border-radius: 99px;
-      background: rgba(56,161,105,0.15);
-      color: #68d391;
-      border: 1px solid rgba(56,161,105,0.3);
-      white-space: nowrap;
-    }
-
-    .arrow {
-      color: var(--muted);
-      font-size: 1rem;
-      transition: color 0.15s;
-    }
-    .report-card:hover .arrow { color: var(--accent); }
-
-    /* ── Empty state ── */
-    .empty {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      padding: 2rem;
-    }
-
-    /* ── Section label ── */
-    .section-label {
-      width: 100%;
-      max-width: 780px;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-      padding-left: 0.2rem;
-    }
-
-    /* ── Footer ── */
-    footer {
-      margin-top: 3rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    @media (max-width: 500px) {
-      .report-date { min-width: 70px; }
-      .report-date .day { font-size: 1.2rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ann's Research Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0f1a;--bg2:#111827;--bg3:#1a2234;--surface:#1e2d45;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --accent:#5b8df5;--accent2:#38bdf8;--accent3:#34d399;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#4b5a72;
+  --font:'Inter','Noto Sans TC',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh}
+nav{background:rgba(11,15,26,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 2rem;height:50px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{font-size:13px;font-weight:600;color:var(--text2)}
+.nav-logo em{color:var(--accent);font-style:normal;margin-right:5px}
+.nav-r{display:flex;align-items:center;gap:6px}
+.nav-r a{font-size:12px;padding:5px 12px;border-radius:6px;border:1px solid transparent;color:var(--text2);text-decoration:none;transition:all .18s}
+.nav-r a:hover{border-color:var(--border2);color:var(--text)}
+.nav-r a.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
+.lang-btn{font-size:11px;padding:5px 12px;border-radius:6px;border:1px solid var(--border2);color:var(--text2);background:transparent;cursor:pointer;transition:all .18s}
+.lang-btn:hover{color:var(--accent);border-color:var(--accent)}
+.hero{text-align:center;padding:72px 2rem 44px}
+.greeting{font-size:12px;font-weight:500;color:var(--text2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.site-title{font-size:clamp(2.6rem,7vw,4.5rem);font-weight:700;line-height:1.08;margin-bottom:12px;background:linear-gradient(130deg,#5b8df5 0%,#38bdf8 55%,#34d399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.site-desc{font-size:15px;color:var(--text2);margin-bottom:6px}
+.site-date{font-size:15px;color:var(--accent2);font-weight:500}
+.filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:2rem 2rem 0;max-width:960px;margin:0 auto}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:8px 18px;border-radius:999px;border:1px solid var(--border2);background:var(--bg2);color:var(--text2);cursor:pointer;text-decoration:none;transition:all .18s}
+.pill:hover{background:var(--surface);border-color:rgba(91,141,245,.5);color:var(--text)}
+.list-wrap{max-width:960px;margin:2.5rem auto 0;padding:0 2rem 5rem;width:100%}
+.list-label{font-size:13px;color:var(--text3);padding-bottom:.75rem;border-bottom:1px solid var(--border);margin-bottom:1rem}
+.rcard{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:10px;display:flex;align-items:center;gap:1.5rem;text-decoration:none;color:inherit;transition:all .18s}
+.rcard:hover{background:var(--bg3);border-color:var(--border2);border-left-color:var(--accent2)}
+.rcard-date{min-width:68px;text-align:center;flex-shrink:0}
+.rcard-day{font-size:2.2rem;font-weight:700;color:var(--accent);line-height:1}
+.rcard-month{font-size:11px;color:var(--text3);margin-top:2px;letter-spacing:.04em}
+.rcard-info{flex:1}
+.rcard-title{font-size:15px;font-weight:600;margin-bottom:8px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:500;padding:3px 9px;border-radius:4px;background:var(--surface);color:var(--text2)}
+.rcard-r{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.badge-new{font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 12px;border-radius:4px;background:rgba(91,141,245,.14);color:var(--accent);border:1px solid rgba(91,141,245,.3)}
+.badge-old{font-size:11px;font-weight:600;letter-spacing:.06em;padding:4px 12px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--text3);border:1px solid var(--border)}
+.arrow{color:var(--text3);font-size:20px}
+footer{border-top:1px solid var(--border);padding:1.75rem 2rem;text-align:center;font-size:12px;color:var(--text3)}
+.en{display:none}
+html[lang=en] .zh{display:none}
+html[lang=en] .en{display:inline}
+</style>
 </head>
 <body>
-
-  <div class="hero">
-    <div class="greeting">Good morning, Ann 👋</div>
-    <h1>Research Hub</h1>
-    <div class="sub">每日科技與資源政策研究報告彙整</div>
-    <div id="live-date"></div>
+<nav>
+  <div class="nav-logo"><em>◈</em>Ann's Research Hub</div>
+  <div class="nav-r">
+    <a href="index.html" class="active"><span class="zh">首頁</span><span class="en">Home</span></a>
+    <a href="research.html"><span class="zh">最新報告</span><span class="en">Latest Report</span></a>
+    <button class="lang-btn" onclick="toggleLang()">EN / 中</button>
   </div>
+</nav>
 
-  <div class="topics">
-    <span>💠 半導體</span>
-    <span>💧 水資源</span>
-    <span>⚡ 電力</span>
-    <span>🌿 能源政策</span>
-    <span>🌐 海底電纜</span>
-    <span>🏗️ 土地資源</span>
-    <span>🛣️ 公共建設</span>
-  </div>
+<div class="hero">
+  <div class="greeting">GOOD <span id="tod"></span>, ANN 👋</div>
+  <h1 class="site-title">Research Hub</h1>
+  <div class="site-desc"><span class="zh">每日竹科水資源與半導體政策研究報告彙整</span><span class="en">Daily HSP Water Resource & Semiconductor Policy Research</span></div>
+  <div class="site-date" id="date-display"></div>
+</div>
 
-  <div class="section-label">所有報告 — 最新在上</div>
+<div class="filters">
+  <a href="research.html#semi"   class="pill">💠 <span class="zh">半導體</span><span class="en">Semiconductors</span></a>
+  <a href="research.html#water"  class="pill">💧 <span class="zh">水資源</span><span class="en">Water</span></a>
+  <a href="research.html#power"  class="pill">⚡ <span class="zh">電力</span><span class="en">Power</span></a>
+  <a href="research.html#energy" class="pill">🌿 <span class="zh">能源政策</span><span class="en">Energy Policy</span></a>
+  <a href="research.html#cable"  class="pill">🌐 <span class="zh">海底電纜</span><span class="en">Submarine Cable</span></a>
+  <a href="research.html#land"   class="pill">🏗️ <span class="zh">土地資源</span><span class="en">Land Resources</span></a>
+  <a href="research.html#infra"  class="pill">🛣️ <span class="zh">公共建設</span><span class="en">Infrastructure</span></a>
+  <a href="research.html#social" class="pill">👥 <span class="zh">社會影響</span><span class="en">Social Impact</span></a>
+</div>
 
-  <div class="report-list" id="report-list">
+<div class="list-wrap">
+  <div class="list-label"><span class="zh">所有報告 — 最新在上</span><span class="en">All Reports — Latest First</span></div>
 
-    <!-- ── 2026-06-17 ── -->
-    <a class="report-card" href="research_20260617.html">
-      <div class="report-date">
-        <div class="day">17</div>
-        <div class="month-year">Jun 2026</div>
+  <!-- 8/11 最新報告 -->
+  <a href="research_20260811.html" class="rcard">
+    <div class="rcard-date">
+      <div class="rcard-day">11</div>
+      <div class="rcard-month">Aug 2026</div>
+    </div>
+    <div class="rcard-info">
+      <div class="rcard-title"><span class="zh">五大科學園區水資源比較・竹科水資源與半導體政策動態快報</span><span class="en">Five Science Parks Water Comparison · HSP Water Resource & Semiconductor Policy Daily Brief</span></div>
+      <div class="tags">
+        <span class="tag">💠 <span class="zh">半導體</span><span class="en">Semi</span></span>
+        <span class="tag">💧 <span class="zh">水資源</span><span class="en">Water</span></span>
+        <span class="tag">⚡ <span class="zh">電力</span><span class="en">Power</span></span>
+        <span class="tag">🌿 <span class="zh">能源政策</span><span class="en">Energy</span></span>
+        <span class="tag">🌐 <span class="zh">海底電纜</span><span class="en">Cable</span></span>
+        <span class="tag">🏗️ <span class="zh">土地</span><span class="en">Land</span></span>
+        <span class="tag">🛣️ <span class="zh">公共建設</span><span class="en">Infra</span></span>
+        <span class="tag">👥 <span class="zh">社會影響</span><span class="en">Social</span></span>
       </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="badge-new">Latest</span>
+    </div>
+    <div class="rcard-r">
+      <span class="badge-new">LATEST</span>
       <span class="arrow">›</span>
-    </a>
+    </div>
+  </a>
 
-    <!-- ── 2026-06-16 ── -->
-    <a class="report-card" href="research_20260616.html">
-      <div class="report-date">
-        <div class="day">16</div>
-        <div class="month-year">Jun 2026</div>
+  <!-- 6/1 舊報告 -->
+  <a href="research_20260601.html" class="rcard">
+    <div class="rcard-date">
+      <div class="rcard-day" style="color:var(--text3);font-size:1.8rem">1</div>
+      <div class="rcard-month">Jun 2026</div>
+    </div>
+    <div class="rcard-info">
+      <div class="rcard-title"><span class="zh">竹科水資源與半導體政策動態快報</span><span class="en">HSP Water Resource & Semiconductor Policy Daily Brief</span></div>
+      <div class="tags">
+        <span class="tag">💠 <span class="zh">半導體</span><span class="en">Semi</span></span>
+        <span class="tag">💧 <span class="zh">水資源</span><span class="en">Water</span></span>
+        <span class="tag">⚡ <span class="zh">電力</span><span class="en">Power</span></span>
+        <span class="tag">🌿 <span class="zh">能源政策</span><span class="en">Energy</span></span>
+        <span class="tag">🌐 <span class="zh">海底電纜</span><span class="en">Cable</span></span>
+        <span class="tag">🏗️ <span class="zh">土地</span><span class="en">Land</span></span>
+        <span class="tag">🛣️ <span class="zh">公共建設</span><span class="en">Infra</span></span>
+        <span class="tag">👥 <span class="zh">社會影響</span><span class="en">Social</span></span>
       </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-
+    </div>
+    <div class="rcard-r">
+      <span class="badge-old">2026.06.01</span>
       <span class="arrow">›</span>
-    </a>
+    </div>
+  </a>
 
-    <!-- ── 2026-06-15 ── -->
-    <a class="report-card" href="research_20260615.html">
-      <div class="report-date">
-        <div class="day">15</div>
-        <div class="month-year">Jun 2026</div>
+  <!-- 5/31 舊報告 -->
+  <a href="research_20260531.html" class="rcard">
+    <div class="rcard-date">
+      <div class="rcard-day" style="color:var(--text3);font-size:1.8rem">31</div>
+      <div class="rcard-month">May 2026</div>
+    </div>
+    <div class="rcard-info">
+      <div class="rcard-title"><span class="zh">竹科水資源與半導體政策動態快報</span><span class="en">HSP Water Resource & Semiconductor Policy Daily Brief</span></div>
+      <div class="tags">
+        <span class="tag">💠 <span class="zh">半導體</span><span class="en">Semi</span></span>
+        <span class="tag">💧 <span class="zh">水資源</span><span class="en">Water</span></span>
+        <span class="tag">⚡ <span class="zh">電力</span><span class="en">Power</span></span>
+        <span class="tag">🌿 <span class="zh">能源政策</span><span class="en">Energy</span></span>
+        <span class="tag">🌐 <span class="zh">海底電纜</span><span class="en">Cable</span></span>
+        <span class="tag">🏗️ <span class="zh">土地</span><span class="en">Land</span></span>
+        <span class="tag">🛣️ <span class="zh">公共建設</span><span class="en">Infra</span></span>
+        <span class="tag">👥 <span class="zh">社會影響</span><span class="en">Social</span></span>
       </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-
+    </div>
+    <div class="rcard-r">
+      <span class="badge-old">2026.05.31</span>
       <span class="arrow">›</span>
-    </a>
+    </div>
+  </a>
 
-    <!-- ── 2026-06-13 ── -->
-    <a class="report-card" href="research_20260613.html">
-      <div class="report-date">
-        <div class="day">13</div>
-        <div class="month-year">Jun 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
+</div>
 
-    <!-- ── 2026-06-11 ── -->
-    <a class="report-card" href="research_20260611.html">
-      <div class="report-date">
-        <div class="day">11</div>
-        <div class="month-year">Jun 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
+<footer><span class="zh">每日由 AI 輔助整理 · 國立陽明交通大學 客家文化學院 · 指導教授：莊雅仲 · PhD 2024–</span><span class="en">AI-assisted daily research · NYCU Hakka College · Advisor: Prof. Zhuang Yazhong · PhD 2024–</span></footer>
 
-    <!-- ── 2026-06-10 ── -->
-    <a class="report-card" href="research_20260610.html">
-      <div class="report-date">
-        <div class="day">10</div>
-        <div class="month-year">Jun 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
-
-    <!-- ── 2026-06-08 ── -->
-    <a class="report-card" href="research_20260608.html">
-      <div class="report-date">
-        <div class="day">08</div>
-        <div class="month-year">Jun 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
-
-    <!-- ── 2026-06-07 ── -->
-    <a class="report-card" href="research_20260607.html">
-      <div class="report-date">
-        <div class="day">07</div>
-        <div class="month-year">Jun 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
-
-    <!-- ── 2026-06-05 ── -->
-    <a class="report-card" href="research_20260605.html">
-      <div class="report-date">
-        <div class="day">05</div>
-        <div class="month-year">Jun 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
-
-    <!-- ── 2026-06-03 ── -->
-    <a class="report-card" href="research_20260603.html">
-      <div class="report-date">
-        <div class="day">03</div>
-        <div class="month-year">Jun 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
-
-    <!-- ── 2026-06-01 ── -->
-    <a class="report-card" href="research_20260601.html">
-      <div class="report-date">
-        <div class="day">01</div>
-        <div class="month-year">Jun 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
-
-    <!-- ── 2026-05-31 ── -->
-    <a class="report-card" href="research_20260531.html">
-      <div class="report-date">
-        <div class="day">31</div>
-        <div class="month-year">May 2026</div>
-      </div>
-      <div class="report-info">
-        <div class="title">科技與資源政策動態週報</div>
-        <div class="tags">
-          <span>半導體</span><span>水資源</span><span>電力</span>
-          <span>能源政策</span><span>海底電纜</span><span>土地資源</span><span>公共建設</span>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
-
-    <!-- 每次新增報告請在上方加入新的 report-card -->
-
-  </div>
-
-  <footer>
-    <p>每日由 AI 自動更新 · 報告儲存於 /Users/ann/nycu/research/</p>
-  </footer>
-
-  <script>
-    // 顯示今天日期與問候語
-    const now = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-    document.getElementById('live-date').textContent = now.toLocaleDateString('zh-TW', options);
-
-    // 依小時調整問候語
-    const h = now.getHours();
-    const greet = h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
-    document.querySelector('.greeting').textContent = greet + ', Ann 👋';
-  </script>
-
+<script>
+function toggleLang(){const r=document.getElementById('html-root');r.lang=r.lang==='zh-TW'?'en':'zh-TW';}
+const now=new Date();
+const wd=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+const h=now.getHours();
+document.getElementById('tod').textContent=h<12?'MORNING':h<18?'AFTERNOON':'EVENING';
+document.getElementById('date-display').textContent=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日 '+wd[now.getDay()];
+</script>
 </body>
 </html>
