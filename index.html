@@ -47,6 +47,33 @@ nav{background:rgba(11,15,26,.96);backdrop-filter:blur(16px);border-bottom:1px s
 .badge-new{font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 12px;border-radius:4px;background:rgba(91,141,245,.14);color:var(--accent);border:1px solid rgba(91,141,245,.3)}
 .badge-old{font-size:11px;font-weight:600;letter-spacing:.06em;padding:4px 12px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--text3);border:1px solid var(--border)}
 .arrow{color:var(--text3);font-size:20px}
+.analysis-wrap{max-width:960px;margin:3rem auto 0;padding:0 2rem}
+.analysis-hdr{margin-bottom:1.5rem}
+.analysis-title{font-size:1.5rem;font-weight:700;margin-bottom:6px}
+.analysis-sub{font-size:13px;color:var(--text2)}
+.stat-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1.75rem}
+.stat-item{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center}
+.stat-num{font-size:1.6rem;font-weight:700;color:var(--accent2);line-height:1.1}
+.stat-lbl{font-size:11px;color:var(--text3);margin-top:4px;letter-spacing:.03em}
+.finding-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:1.75rem}
+.finding-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent3);border-radius:10px;padding:1.25rem 1.5rem}
+.finding-card.alert{border-left-color:#f59e0b}
+.finding-card.compare{border-left-color:var(--accent2)}
+.finding-num{display:inline-block;font-size:11px;font-weight:700;color:var(--accent3);letter-spacing:.08em;margin-bottom:6px}
+.finding-card.alert .finding-num{color:#f59e0b}
+.finding-card.compare .finding-num{color:var(--accent2)}
+.finding-title{font-size:15px;font-weight:600;margin-bottom:8px}
+.finding-body{font-size:13.5px;line-height:1.75;color:var(--text2)}
+.finding-body b,.finding-body strong{color:var(--text);font-weight:600}
+.park-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1.75rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.park-table th,.park-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+.park-table th{background:var(--bg3);color:var(--text2);font-size:11px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.park-table tr:last-child td{border-bottom:none}
+.park-table td.pname{font-weight:600;color:var(--text);white-space:nowrap}
+.park-table td.highlight{color:var(--accent3)}
+.gap-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:1rem 1.25rem;font-size:13px;line-height:1.75;color:var(--text2);margin-bottom:1.75rem}
+.gap-box b{color:#f59e0b}
+.analysis-foot{font-size:12px;color:var(--text3);line-height:1.7;padding-top:.5rem;border-top:1px solid var(--border)}
 footer{border-top:1px solid var(--border);padding:1.75rem 2rem;text-align:center;font-size:12px;color:var(--text3)}
 .en{display:none}
 html[lang=en] .zh{display:none}
@@ -79,6 +106,89 @@ html[lang=en] .en{display:inline}
   <a href="research.html#land"   class="pill">🏗️ <span class="zh">土地資源</span><span class="en">Land Resources</span></a>
   <a href="research.html#infra"  class="pill">🛣️ <span class="zh">公共建設</span><span class="en">Infrastructure</span></a>
   <a href="research.html#social" class="pill">👥 <span class="zh">社會影響</span><span class="en">Social Impact</span></a>
+</div>
+
+<div class="analysis-wrap">
+  <div class="analysis-hdr">
+    <div class="analysis-title"><span class="zh">📊 兩個半月資料分析（5/31–8/11）</span><span class="en">📊 Two-and-a-Half-Month Data Analysis (May 31–Aug 11)</span></div>
+    <div class="analysis-sub"><span class="zh">18 份有效報告・634 則新聞條目・AI 輔助彙整後的人工判讀</span><span class="en">18 valid reports · 634 news items · human-reviewed synthesis of the AI-assisted archive</span></div>
+  </div>
+
+  <div class="stat-bar">
+    <div class="stat-item"><div class="stat-num">18</div><div class="stat-lbl"><span class="zh">有效報告</span><span class="en">Valid Reports</span></div></div>
+    <div class="stat-item"><div class="stat-num">634</div><div class="stat-lbl"><span class="zh">新聞條目</span><span class="en">News Items</span></div></div>
+    <div class="stat-item"><div class="stat-num">91</div><div class="stat-lbl"><span class="zh">💧 水資源條目</span><span class="en">💧 Water Items</span></div></div>
+    <div class="stat-item"><div class="stat-num">83+82</div><div class="stat-lbl"><span class="zh">⚡電力＋🌿能源</span><span class="en">⚡Power + 🌿Energy</span></div></div>
+    <div class="stat-item"><div class="stat-num">73</div><div class="stat-lbl"><span class="zh">天跨度（含斷檔）</span><span class="en">Day Span (w/ gaps)</span></div></div>
+  </div>
+
+  <div class="finding-grid">
+
+    <div class="finding-card">
+      <div class="finding-num">01 · <span class="zh">核心發現</span><span class="en">KEY FINDING</span></div>
+      <div class="finding-title"><span class="zh">竹科水資源「先天最脆弱」的說法貫穿全期資料，非單一事件</span><span class="en">HSP's "structurally most vulnerable" status is a persistent thread, not a one-off event</span></div>
+      <div class="finding-body">
+        <span class="zh">從 5/31（南部水庫蓄水率跌破一成、水利署啟動「供 9 停 5」輪灌）、6/1（新竹 3 月水情黃燈、石門水庫每日調度支援 17.5 萬噸）到 8/11 的五園區比較報告，同一個結構性論點被反覆印證：竹科<b>沒有大型主力水庫</b>，主要仰賴石門水庫跨區調度（桃園→新竹）＋寶山＋寶二三座相對小容量水庫。相較之下，中科有鯉魚潭＋石岡壩雙主力，南科有曾文＋南化＋烏山頭多水源，高雄 F22 甚至不倚賴水庫、改採全量再生水＋高屏溪伏流水。這個對比可以直接支撐妳〈當晶圓廠遇上春耕〉論文中「竹科水資源結構性劣勢」的核心論證，也呼應寶山二期4 座 2nm 廠日用水 9.8 萬噸、佔新竹總用水 16–18% 的具體數字。</span>
+        <span class="en">From May 31 (southern reservoirs below 10% capacity, "supply 9 / halt 5" rotational irrigation) and June 1 (HSP's March yellow alert, Shihmen Reservoir transferring 175K tons/day) through the August 11 five-park comparison, the same structural claim recurs: HSP has no major primary reservoir and depends on cross-region transfer from Shihmen plus two smaller reservoirs (Baoshan/Baoer), unlike CIP's dual-reservoir system, STSP's multi-source network, or Kaohsiung F22's reservoir-independent, reclaimed-water-first model. This directly supports the structural-disadvantage argument in your journal article.</span>
+      </div>
+    </div>
+
+    <div class="finding-card compare">
+      <div class="finding-num">02 · <span class="zh">南北對比</span><span class="en">COMPARISON</span></div>
+      <div class="finding-title"><span class="zh">再生水承諾的南北落差：竹科跳票 vs. 南科成熟 vs. 高雄 100% 承諾</span><span class="en">A north-south gap in reclaimed-water commitments: HSP's broken pledge vs. STSP's maturity vs. Kaohsiung's 100% pledge</span></div>
+      <div class="finding-body">
+        <span class="zh">資料中反覆出現三個不同層次的再生水故事：(1) 竹科／南科再生水廠雖從 6 月起持續追蹤「每日 3.6 萬噸、覆蓋六成在地用水」，但《再生水資源發展條例》子法 2026 年 2 月上路後，竹科的再生水承諾在 2025 年已跳票，是全期資料中最具爭議的一條線索；(2) 南科永康水資中心已是「全台再生水最成熟基地」，MBR+RO 雙重過濾、9.5 公里地下管線，每日供應 6.7 萬噸；(3) 高雄 F22 是<b>全台唯一在環評階段承諾終期製程用水 100% 再生水</b>的廠區（橋頭＋楠梓兩廠，2028 年後合計 10 萬噸/日），完全不依賴水庫、不排擠農業用水。三者並列，正是妳論文「農工共好」制度條件章節最現成的比較素材，也呼應熊本 JASM 地下水涵養達用量三倍的「Water Positive」國際基準。</span>
+        <span class="en">Three tiers of reclaimed-water story recur through the data: HSP/STSP plants tracked since June at 36K tons/day (60% of local demand), but HSP's 2025 reclaimed-water pledge was broken after the February 2026 sub-regulations took effect — the most contested thread in the archive. STSP's Yongkang center is described as Taiwan's most mature site (67K tons/day). Kaohsiung F22 is the only fab that committed to 100% reclaimed water at the EIA stage, needing no reservoir water at all. Together these give a ready-made comparative structure for your "farmer-industry coexistence" institutional-conditions section, echoing Kumamoto JASM's 3x groundwater replenishment as an international benchmark.</span>
+      </div>
+    </div>
+
+    <div class="finding-card alert">
+      <div class="finding-num">03 · <span class="zh">平行壓力</span><span class="en">PARALLEL PRESSURE</span></div>
+      <div class="finding-title"><span class="zh">電力議題在 6–7 月急速膨脹，幾乎蓋過水資源版面</span><span class="en">Power coverage exploded in June–July, briefly overshadowing water</span></div>
+      <div class="finding-body">
+        <span class="zh">分類條目統計顯示水資源（91 則）與電力（83 則）＋能源政策（82 則）在數量上相近，但<b>時序分布明顯不同</b>：水資源條目集中在 5/31–6/13 與 8/11 兩端，中段（6/15–7/17）大量條目其實是美國 PJM 電網危機、熱浪、DOE 緊急命令的國際電力新聞（幾乎每份報告都有 4–5 則）。這反映了同一份研究流程在追蹤「水」的同時，意外累積了大量「電」的國際比較材料——台電 2026–2030 新增 500 萬瓩、台積電 2030 年用電估占全台 15.6%、備轉容量率恐低於 6–8%，這些數字剛好可以和竹科水資源的脆弱性並列，構成「資源治理的雙重擠壓」敘事，但目前妳的論文題目聚焦水資源，這批電力資料建議留給博論後續章節或另立短論，避免期刊論文範疇失焦。</span>
+        <span class="en">Water (91) and power (83) + energy policy (82) items are similar in volume but diverge sharply in timing: water items cluster at the two ends of the period (May 31–Jun 13 and Aug 11), while the middle stretch (Jun 15–Jul 17) is dominated by US PJM grid-crisis, heatwave, and DOE emergency-order coverage. Taiwan-side figures (Taipower's +5GW 2026–2030, TSMC's projected 15.6% share of national power by 2030, reserve margins potentially below 6–8%) pair naturally with HSP's water vulnerability as a "dual resource squeeze" narrative — but given your journal article's water focus, this power material is better saved for a dissertation chapter or a separate short piece, to keep the article's scope tight.</span>
+      </div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-num">04 · <span class="zh">田野關聯</span><span class="en">FIELDWORK LINK</span></div>
+      <div class="finding-title"><span class="zh">大崎村徵收、香山綠牡蠣、頭前溪公投——妳的田野場域持續被自動抓取到</span><span class="en">Dachi resettlement, Xiangshan oysters, Touqian River referendum — your fieldsite keeps surfacing</span></div>
+      <div class="finding-body">
+        <span class="zh">8/11 報告的社會影響區塊明確標記「竹科寶山二期：徵收約 90 公頃客家聚落，大崎村拆遷歷史記錄——本研究田野核心」與「香山綠牡蠣事件：竹科廢水 30 年污染史，2009 年起禁止養殖——論文文獻回顧核心」，代表妳既有的碩論田野基礎正被系統性地串接進博論的政策脈絡；6/1 也出現「13 萬新竹人公投通過『喝好水』，頭前溪汙染源仍在」與清大「我們要喝乾淨水行動聯盟」碩論的追蹤。但要留意：<b>社會影響（social）分類幾乎只在 5/31、6/1、8/11 三份報告出現</b>（其餘 14 份為 0 則），顯示每日自動抓取流程可能沒有穩定的社會影響新聞源，這塊建議妳手動補充田野追蹤，不要完全依賴每日報告。</span>
+        <span class="en">The Aug 11 report explicitly flags Baoshan Phase 2's ~90-hectare Hakka-settlement land acquisition and the Dachi resettlement history as the study's fieldwork core, and the Xiangshan green-oyster case as core to the literature review. June 1 also surfaced the Touqian River "clean water" referendum and a related NYCU thesis. Note, however, that the "social impact" category appears in only 3 of 18 reports (May 31, Jun 1, Aug 11) — the daily auto-pipeline likely lacks a stable social-impact news source, so this thread needs manual supplementation rather than reliance on the daily briefs alone.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <table class="park-table">
+    <thead>
+      <tr>
+        <th><span class="zh">園區</span><span class="en">Park</span></th>
+        <th><span class="zh">主力水源</span><span class="en">Primary Source</span></th>
+        <th><span class="zh">再生水現況</span><span class="en">Reclaimed Water</span></th>
+        <th><span class="zh">農業用水衝突</span><span class="en">Ag. Water Conflict</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="pname">竹科 HSP</td><td>石門＋寶山＋寶二（無大型主力水庫）</td><td class="highlight">南寮海淡廠 2028 完工；承諾曾跳票</td><td class="highlight">頭前溪最激烈</td></tr>
+      <tr><td class="pname">中科 CIP</td><td>鯉魚潭＋石岡壩雙主力</td><td>水湳廠 2024 起 1 萬噸/日</td><td>后里有抗爭歷史</td></tr>
+      <tr><td class="pname">南科 STSP</td><td>曾文＋南化＋烏山頭多源</td><td class="highlight">永康廠 6.7 萬噸/日，全台最成熟</td><td>相對緩和</td></tr>
+      <tr><td class="pname">嘉科 CSP</td><td>蘭潭＋仁義潭（南化可調度）</td><td>基礎設施尚未成熟</td><td>資料不足，待追蹤</td></tr>
+      <tr><td class="pname">高雄 F22</td><td class="highlight">不倚賴水庫；高屏溪伏流水備援</td><td class="highlight">承諾終期 100% 再生水</td><td class="highlight">迄今無衝突</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gap-box">
+    <span class="zh"><b>⚠️ 資料缺口提醒：</b>7/16 報告檔案內容為空（可能是當日抓取失敗）；7/17 之後到 8/11 有將近 3.5 週的斷檔，是全期最大的資料空窗。若要把 8/11 的五園區比較報告當作 8 月研究計畫的正式起點，建議先確認 7 月下旬到 8 月初這段期間是否有妳需要、但報告沒抓到的關鍵事件（例如颱風後水情、龍潭三期後續審查進度）。另外，本分析所有數字均取自報告內文，正式寫入論文前仍請依妳既有的查證慣例，回頭比對原始來源（水利署、環境權保障基金會、經濟部聯通管工程等）。</span>
+    <span class="en"><b>⚠️ Coverage gap note:</b> The Jul 16 report file is empty (likely a failed scrape that day), and there's a ~3.5-week gap between Jul 17 and Aug 11 — the largest blank stretch in the archive. If Aug 11's five-park comparison is meant to anchor your August research project, it's worth checking whether any key events in late July/early August (post-typhoon water conditions, Longtan Phase 3 review progress) fell through that gap. All figures above are drawn from the report text; as per your usual verification habit, please cross-check original sources (WRA, ERF, MOEA pipeline project office, etc.) before citing in the article.</span>
+  </div>
+
+  <div class="analysis-foot">
+    <span class="zh">分析範圍：research_20260531.html 至 research_20260811.html（共 20 個報告檔案，18 個有效）。分類統計依各報告 HTML 內建的 section 標籤（semi / water / power / energy / cable / land / infra / social）自動計數後人工覆核。</span>
+    <span class="en">Scope: research_20260531.html through research_20260811.html (20 report files, 18 valid). Category counts are auto-tallied from each report's built-in section tags (semi / water / power / energy / cable / land / infra / social) and manually reviewed.</span>
+  </div>
 </div>
 
 <div class="list-wrap">
